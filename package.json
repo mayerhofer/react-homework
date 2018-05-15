@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/mayerhofer/react-homework/issues"
   },
-  "homepage": "https://github.com/mayerhofer/react-homework#readme"
+  "homepage": "https://github.com/mayerhofer/react-homework#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
+  }
 }
