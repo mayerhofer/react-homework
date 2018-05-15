@@ -13,12 +13,3 @@ class App extends Component {
 }
 
 export default App;
-// const ReactDOM = require('react-dom');
-// const express = require('express');
-// const router = express.Router;
-//const app = express();
-
-
-//app.get('/', (req, res) => res.send(ReactDOM.render(React.createElement('h1', {}, 'Hello World!'))));
-
-//app.listen(3000, () => console.log('Example app listening on port 3000!'));
