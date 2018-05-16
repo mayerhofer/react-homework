@@ -20,8 +20,12 @@
   "homepage": "https://github.com/mayerhofer/react-homework#readme",
   "dependencies": {
     "express": "^4.16.3",
+    "jest": "^22.4.3",
     "react": "^16.3.2",
-    "react-dom": "^16.3.2"
+    "react-dom": "^16.3.2",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.2.0",
+    "redux": "^4.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
