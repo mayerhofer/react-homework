@@ -2,3 +2,6 @@
 # modules from package manager
 /node_modules
 
+# build files from webpack
+/build
+
