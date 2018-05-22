@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { renderToString } from 'react-dom/server';
 import App from './App.js';
-import template from './template';
+import template from './template.js';
 
 http.createServer((req, res) => {
   res.writeHead(200, {'Content-Type': 'text/html'});
