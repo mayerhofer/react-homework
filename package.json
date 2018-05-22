@@ -4,9 +4,11 @@
   "description": "",
   "main": "./src/index.js",
   "scripts": {
-    "build": "./node_modules/.bin/webpack-cli",
-    "watch": "./node_modules/.bin/webpack-cli --watch",
-    "start": "./node_modules/.bin/webpack-dev-server --config ./webpack.config.js --mode development",
+    "build:dev": "./node_modules/.bin/webpack --config ./webpack.config.js --env.devOrProdMode=development",
+    "build:prd": "./node_modules/.bin/webpack --config ./webpack.config.js --env.devOrProdMode=production",
+    "watch": "./node_modules/.bin/webpack-cli --watch --config ./webpack.config.js --env.devOrProdMode=development",
+    "start:dev": "./node_modules/.bin/webpack-dev-server --config ./webpack.config.js --env.devOrProdMode=development",
+    "start:prd": "./node_modules/.bin/webpack-dev-server --config ./webpack.config.js --env.devOrProdMode=production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
