@@ -5,9 +5,11 @@ import { renderToString } from 'react-dom/server';
 import App from './App.js';
 import template from './template.js';
 
-http.createServer((req, res) => {
-  res.writeHead(200, {'Content-Type': 'text/html'});
-  res.end(template({ body: renderToString(<App />), title: 'React EPAM Homework' }));
-}).listen(3000, '127.0.0.1');
+const render = function() {
+  ReactDOM.render(<App />, 
+  document.getElementById('root'));
+}
+
+render();
 
 console.log('Server running at http://localhost:3000/');
