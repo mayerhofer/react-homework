@@ -1,4 +1,5 @@
 var path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = env => {
 
@@ -9,6 +10,14 @@ module.exports = env => {
             path: path.join(__dirname, 'build'),
             filename: 'bundle.js'
         },
+        plugins: [
+            new HtmlWebpackPlugin({
+                hash: true,
+                title: 'React HomeWork - Movie Search',
+                template: './src/index.html',
+                filename: './index.html'
+            })
+        ],
         watch: true,
         devServer: {
             contentBase: path.join(__dirname, 'build'),
