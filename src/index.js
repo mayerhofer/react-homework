@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { renderToString } from 'react-dom/server';
 import App from './App.js';
-import template from './template.js';
 
 const render = function() {
   ReactDOM.render(<App />, 
