@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import AppHeader from './components/AppHeader';
 import AppContainer from './components/AppContainer';
+import ErrorBoundary from './components/ErrorBoundary';
 import background from './images/netflix-background-8.png';
 
 const sectionStyle = {
@@ -18,10 +19,10 @@ class App extends Component {
     render() {
 
         return (
-            <div id="bodyDiv">
+            <ErrorBoundary message="We had a major error in application. Please wait for our support team to fix.">
                 <AppHeader title="Netflix Roulette" />
                 <AppContainer />
-            </div>
+            </ErrorBoundary>
         );
     }
 }
