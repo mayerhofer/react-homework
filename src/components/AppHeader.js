@@ -2,9 +2,20 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Nav, Navbar, NavItem, NavDropdown } from 'react-bootstrap';
 
+const navbarStyle = {
+    background: 'transparent',
+    backgroundColor: 'transparent',
+    borderColor: 'transparent',
+
+}
+
+const linkStyle = {
+    color: 'red'
+}
+
 const NavHeader = (props) => (
     <Navbar.Header>
-        <Navbar.Brand><a href="#home">{props.title}</a></Navbar.Brand>
+        <Navbar.Brand><h3><a style={linkStyle} href="#home">{props.title}</a></h3></Navbar.Brand>
     </Navbar.Header>
 );
 
@@ -19,7 +30,7 @@ class AppHeader extends React.Component {
 
     render() {
         return (
-        <Navbar>
+        <Navbar style={navbarStyle}>
             <NavHeader title={this.props.title} />
             <NavBody content={this.props.content} />
         </Navbar>);
