@@ -6,7 +6,6 @@ const navbarStyle = {
     background: 'transparent',
     backgroundColor: 'transparent',
     borderColor: 'transparent',
-
 }
 
 const linkStyle = {
@@ -19,12 +18,12 @@ const NavHeader = (props) => (
     </Navbar.Header>
 );
 
-const NavBody = (props) => (
-    <Nav>
-        <NavItem evenKey={1} href="#">
-        </NavItem>
-    </Nav>
-);
+// const NavBody = (props) => (
+//     <Nav>
+//         <NavItem evenKey={1} href="#">
+//         </NavItem>
+//     </Nav>
+// );
 
 class AppHeader extends React.Component {
 
@@ -32,7 +31,7 @@ class AppHeader extends React.Component {
         return (
         <Navbar style={navbarStyle}>
             <NavHeader title={this.props.title} />
-            <NavBody content={this.props.content} />
+            {/* <NavBody content={this.props.content} /> */}
         </Navbar>);
     };
 }
