@@ -14,7 +14,7 @@ const linkStyle = {
 
 const NavHeader = (props) => (
     <Navbar.Header>
-        <Navbar.Brand><h3><a style={linkStyle} href="#home">{props.title}</a></h3></Navbar.Brand>
+        <Navbar.Brand style={{marginLeft: '100px!important'}}><h3><a style={linkStyle} href="#home">{props.title}</a></h3></Navbar.Brand>
     </Navbar.Header>
 );
 

@@ -52,7 +52,13 @@ class AppContainer extends React.Component {
 
         return (
             <ErrorBoundary message="Sorry. Our search box crashed. Please call for support.">
-                <SearchBox title="FIND YOUR MOVIE" caption="Search ..." />
+                <SearchBox
+                    title="FIND YOUR MOVIE"
+                    caption="Search ..."
+                    toolbarButtonCaption="SEARCH BY"
+                    btnByTitleCaption="TITLE"
+                    btnByGenreCaption="GENRE"
+                    btnSearchCaption="SEARCH" />
             </ErrorBoundary>
         );
     };
