@@ -4,4 +4,5 @@
 
 # build files from webpack
 /build
-
+/dist
+/coverage

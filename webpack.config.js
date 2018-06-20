@@ -1,5 +1,7 @@
-var path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = env => {
 
@@ -16,6 +18,10 @@ module.exports = env => {
                 title: 'React HomeWork - Movie Search',
                 template: './src/index.html',
                 filename: './index.html'
+            }),
+            new MiniCssExtractPlugin({
+                filename: '[name].css',
+                chunkFilename: '[id].css'
             })
         ],
         watch: true,
@@ -27,17 +33,17 @@ module.exports = env => {
         module: {
             rules: [
                 {
-                    test: /\.jsx?$/,
+                    test: [/\.js$/,/\.jsx?$/,/\.es6$/],
                     exclude: /node_modules/,
                     include: path.join(__dirname, 'src'),
                     loader: 'babel-loader',
                     query: {
-                        presets: ['env', 'react']
+                        presets: ['env', 'react', 'es2015']
                     }
                 },
                 {
-                    test: /\.css$/,
-                    loaders: ['style-loader!css-loader']
+                    test: [/\.css$/,/\.scss$/],
+                    loaders: ['style-loader!css-loader', 'sass-loader', MiniCssExtractPlugin.loader]
                 },
                 {
                     test: /\.(jp(e*)g|png|svg)$/,

@@ -6,10 +6,11 @@
   "scripts": {
     "build:dev": "./node_modules/.bin/webpack --config ./webpack.config.js --env.devOrProdMode=development",
     "build:prd": "./node_modules/.bin/webpack --config ./webpack.config.js --env.devOrProdMode=production",
+    "build:test": "./node_modules/.bin/webpack --config ./webpack.config-test.js ./src/test/components/AppHeaderTest.js ./build/test/testBundle.js --target node --display-error-details",
     "watch": "./node_modules/.bin/webpack-cli --watch --config ./webpack.config.js --env.devOrProdMode=development",
     "start:dev": "./node_modules/.bin/webpack-dev-server --config ./webpack.config.js --env.devOrProdMode=development",
     "start:prd": "./node_modules/.bin/webpack-dev-server --config ./webpack.config.js --env.devOrProdMode=production",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --verbose"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
   "homepage": "https://github.com/mayerhofer/react-homework#readme",
   "dependencies": {
     "express": "^4.16.3",
+    "mini-css-extract-plugin": "^0.4.0",
     "react": "^16.4.0",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.4.0",
@@ -31,16 +33,39 @@
     "react-router": "^4.2.0",
     "redux": "^4.0.0"
   },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "bower_components",
+      "shared"
+    ],
+    "transform": {
+      ".*": "<rootDir>/node_modules/babel-jest"
+    },
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react",
+      "<rootDir>/node_modules/react-dom"
+    ],
+    "moduleNameMapper": {
+      "^config$": "<rootDir>/weppack.config.js",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+    }
+  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
+    "babel-jest": "^23.0.1",
     "babel-loader": "^7.1.4",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "bootstrap": "^3.3.7",
-    "chai": "^4.1.2",
     "css-loader": "^0.28.11",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
@@ -49,7 +74,6 @@
     "image-webpack-loader": "^4.3.1",
     "jest": "^23.1.0",
     "jest-enzyme": "^6.0.1",
-    "sinon": "^6.0.0",
     "style-loader": "^0.21.0",
     "url-loader": "^1.0.1",
     "webpack": "^4.8.3",
