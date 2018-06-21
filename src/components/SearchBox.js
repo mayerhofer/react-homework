@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 import { Form, FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap';
 import SearchButtonToolbar from './SearchButtonToolbar';
 
@@ -34,7 +35,6 @@ class SearchBox extends React.Component {
         } catch (err) {
             console.log(err.message);
         }
-        
     }
 
     render() {
@@ -58,6 +58,15 @@ class SearchBox extends React.Component {
             </Form>
         );
     }
+}
+
+SearchBox.defaultProps = {
+    btnByGenreCaption: 'GENRE',
+    btnByTitleCaption: 'TITLE',
+    btnSearchCaption: 'SEARCH',
+    toolbarButtonCaption: 'SEARCH BY',
+    caption: 'Search ...',
+    title: 'FIND YOUR MOVIE'
 }
 
 export default SearchBox;
