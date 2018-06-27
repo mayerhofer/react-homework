@@ -1,16 +1,16 @@
-import { fetchMovies } from '../services/api/movies';
+import { fetchMovies } from '../servers/movieSvc';
 import * as types from '../constants/actionTypes';
 
 export const moviesLoadingStart = () => ({
-    type: types.MOVIES_DATA_LOADING_START
+    type: types.MOVIE_LOADING_START
 });
   
 export const moviesLoadingSuccess = () => ({
-    type: types.MOVIES_DATA_LOADING_SUCCESS
+    type: types.MOVIE_LOADING_SUCCESS
 });
 
 export const moviesLoadingError = (error) => ({
-    type: types.MOVIES_DATA_LOADING_ERROR,
+    type: types.MOVIE_LOADING_ERROR,
     error: error
 });
 

@@ -4,7 +4,7 @@ import * as types from '../../constants/actionTypes';
 describe('movie', () => {
     it('should create an action to notify loading was successful', () => {
         const expectedAction = {
-            type: types.MOVIES_DATA_LOADING_SUCCESS
+            type: types.MOVIE_LOADING_SUCCESS
         }
         expect(actions.moviesLoadingSuccess()).toEqual(expectedAction)
     });
