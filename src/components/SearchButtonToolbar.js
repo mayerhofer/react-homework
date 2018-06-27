@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { ButtonToolbar, Button, Label, Grid, Row, Col, Overlay } from 'react-bootstrap';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 import * as filters from '../constants/filters';
 import * as pageTexts from '../constants/pageTexts';
+import * as searchActions from '../actions/search';
 
 class SearchButtonToolbar extends React.Component {
 
@@ -45,7 +48,7 @@ class SearchButtonToolbar extends React.Component {
                             <Button bsStyle={this.state.btnByGenreStyle} onClick={this.searchByGenre.bind(this)}>{this.props.btnByGenreCaption}</Button>
                         </Col>
                         <Col xs={6} sm={3} md={6} lg={7}></Col>
-                        <Col xs={6} sm={2} md={1} lg={1}><Button type="submit" bsStyle="danger">{pageTexts.CAPTION_SEARCH_BUTTON}</Button></Col>
+                        <Col xs={6} sm={2} md={1} lg={1}><Button type="submit" bsStyle="danger" onClick={() => this.props.search()}>{pageTexts.CAPTION_SEARCH_BUTTON}</Button></Col>
                     </Row>
                 </Grid>
             </ButtonToolbar>
@@ -53,4 +56,15 @@ class SearchButtonToolbar extends React.Component {
     }
 }
 
-export default SearchButtonToolbar;
+function mapStateToProps(state) {
+    return {
+        searchText: state.searchText,
+        searchFilter: state.selectedFilter
+    }
+}
+
+function matchDispatchToProps(dispatch) {
+    return bindActionCreators({search: searchActions.searchMovies}, dispatch);
+}
+
+export default connect(mapStateToProps)(SearchButtonToolbar);

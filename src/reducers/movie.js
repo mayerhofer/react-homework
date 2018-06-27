@@ -1,10 +1,3 @@
-// const initialState = {
-//     articles: []
-// };
-// const rootReducer = (state = initialState, action) => state;
-// export default rootReducer;
-
-
 import { combineReducers } from 'redux';
 import * as types from '../constants/actionTypes';
 

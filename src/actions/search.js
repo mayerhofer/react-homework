@@ -10,8 +10,11 @@ export const setSearchFilter = (value) => ({
     value: value
 });
 
-export const searchMovies = (filter, text) => ({
-    type: types.SET_SEARCH_RESULTS_CRITERIA,
-    filter,
-    text
-});
+export const searchMovies = (filter, text) => {
+    console.log('searchMovies action called.');
+    return ({
+        type: types.SET_SEARCH_RESULTS_CRITERIA,
+        filter,
+        text
+    });
+};

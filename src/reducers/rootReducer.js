@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
 import movie from './movie';
-import search from './reducers/search';
+import search from './search';
 
 const reducer = combineReducers({
     movie,

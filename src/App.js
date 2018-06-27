@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { persistStore } from 'redux-persist';
-import { AsyncStorage } from 'react-native';
-import { AppLoading } from 'expo';
 
 import * as texts from './constants/pageTexts';
 import AppHeader from './components/AppHeader';
 import AppContainer from './components/AppContainer';
 import ErrorBoundary from './components/ErrorBoundary';
+import store from './store/configureStore';
 import background from './images/netflix-background-8.png';
+import { connect } from 'http2';
 
 
 const sectionStyle = {
@@ -22,23 +22,20 @@ var homeBody = document.getElementById("body");
 homeBody.background = background;
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isReady: false,
+        };
+    }
+
     componentDidMount() {
-        persistStore(
-            store,
-            {
-                storage: AsyncStorage,
-            },
-            () => {
-                this.setState({ isReady: true });
-            }
-        );
+        if (!this.props.movies.data.length) {
+            this.props.loadMovies();
+        }
     }
 
     render() {
-        if (!this.state.isReady) {
-            return <AppLoading />;
-        }
-
         return (
             <ErrorBoundary message={texts.ERROR_BOUNDARY_APP_MESSAGE}>
                 <Provider store={store}>
@@ -50,4 +47,11 @@ class App extends Component {
     }
 }
 
-export default App;
+function mapStateToProps(state) {
+    return {movies: state.movies.data};
+}
+function mapDispatchToProps(dispatch) {
+    return {loadMovies: () => dispatch(loadMovies())};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

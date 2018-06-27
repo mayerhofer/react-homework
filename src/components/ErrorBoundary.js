@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 
 class ErrorBoundary extends React.Component {
     constructor(props) {
       super(props);
-      this.state = { hasError: false };
+      this.state = { hasError: false, error: undefined, errorInfo: undefined };
     }
   
     componentDidCatch(error, info) {
       // Display fallback UI
-      this.setState({ hasError: true });
+      this.setState({ hasError: true, error: error, errorInfo: info });
       // You can also log the error to an error reporting service
       //logErrorToMyService(error, info);
     }
@@ -33,8 +33,8 @@ class ErrorBoundary extends React.Component {
     }
 }
 
-ErrorBoundary.PropTypes = {
-  message: PropTypes.string.isRequired
+ErrorBoundary.propTypes = {
+  message: propTypes.string.isRequired
 };
 
 ErrorBoundary.defaultProps = {
