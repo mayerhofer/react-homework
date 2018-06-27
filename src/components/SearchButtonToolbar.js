@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { ButtonToolbar, Button, Label, Grid, Row, Col, Overlay } from 'react-bootstrap';
 
+import * as pageTexts from '../constants/pageTexts';
+
 class SearchButtonToolbar extends React.Component {
 
     constructor(props) {
@@ -28,14 +30,14 @@ class SearchButtonToolbar extends React.Component {
             <ButtonToolbar>
                 <Grid fluid={true}>
                     <Row className="show-grid">
-                        <Col xs={12} sm={3} md={2} lg={2}><h4>{this.props.title}</h4></Col>
+                        <Col xs={12} sm={3} md={2} lg={2}><h4>{pageTexts.CAPTION_SEARCH_TOOLBAR}</h4></Col>
                         <Col xs={12} sm={2} md={1} lg={1}>
-                            <Button bsStyle={this.state.btnByTitleStyle} onClick={this.searchByTitle.bind(this)}>{this.props.btnByTitleCaption}</Button>
+                            <Button bsStyle={this.state.btnByTitleStyle} onClick={this.searchByTitle.bind(this)}>{pageTexts.CAPTION_ByTITLE_BUTTON}</Button>
                             <Label>&#160;&#160;</Label>
-                            <Button bsStyle={this.state.btnByGenreStyle} onClick={this.searchByGenre.bind(this)}>{this.props.btnByGenreCaption}</Button>
+                            <Button bsStyle={this.state.btnByGenreStyle} onClick={this.searchByGenre.bind(this)}>{pageTexts.CAPTION_ByGENRE_BUTTON}</Button>
                         </Col>
                         <Col xs={6} sm={3} md={6} lg={7}></Col>
-                        <Col xs={6} sm={2} md={1} lg={1}><Button type="submit" bsStyle="danger">{this.props.btnSearchCaption}</Button></Col>
+                        <Col xs={6} sm={2} md={1} lg={1}><Button type="submit" bsStyle="danger">{pageTexts.CAPTION_SEARCH_BUTTON}</Button></Col>
                     </Row>
                 </Grid>
             </ButtonToolbar>

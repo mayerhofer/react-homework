@@ -12,7 +12,8 @@ const sectionStyle = {
 }
 
 var homeBody = document.getElementById("body");
-homeBody.background = background;
+if (homeBody != null)
+    homeBody.background = background;
 
 class App extends Component {
 

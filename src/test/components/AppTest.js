@@ -1,12 +1,12 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {shallow, mount, render} from 'enzyme';
-import AppHeader from '../../components/AppHeader';
+import App from '../../App';
 
-describe('AppHeader Component', () => {
+describe('AppContainer Component', () => {
 
     it('should render without throwing an error', () => {
-        expect(render(<AppHeader />)).toMatchSnapshot();
+        expect(render(<App />)).toMatchSnapshot();
     });
 });
 

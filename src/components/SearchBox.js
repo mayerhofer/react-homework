@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Form, FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap';
+import { Form, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import SearchButtonToolbar from './SearchButtonToolbar';
+import * as pageTexts from '../constants/pageTexts';
 
 const formStyle = {
     paddingRight: '20px',
@@ -10,51 +11,35 @@ const formStyle = {
 }
 
 class SearchBox extends React.Component {
-
     constructor(props) {
         super(props);
         this.state = { value: '' }
     }
 
-    getValidationState() {
-        // const length = this.state.value.length;
-        // if (length > 1) return 'success';
-        // else if (length > 0) return 'error';
-        return null;
-    }
-
     handleChange(e) {
         try {
-            if (e == null)
-                return;
-            else if (e.target == null)
+            if (e == null || e.target == null)
                 return;
 
             this.setState({ value: e.target.value });
         } catch (err) {
             console.log(err.message);
         }
-        
     }
 
     render() {
         return (
             <Form style={formStyle}>
-                <FormGroup controlId="searchBox" validationState={this.getValidationState()}>
-                <ControlLabel>{this.props.title}</ControlLabel>
+                <FormGroup controlId="searchBox">
+                <ControlLabel>{pageTexts.CAPTION_SEARCH_TITLE}</ControlLabel>
                 <FormControl
                     type="text"
                     value={this.state.value}
-                    placeholder={this.props.caption}
+                    placeholder={pageTexts.CAPTION_SEARCH_FIELD}
                     onChange={this.handleChange.bind(this)} />
                 </FormGroup>
                 <FormControl.Feedback />
-                <HelpBlock>At least two letters. If not found, no results will be displayed.</HelpBlock>
-                <SearchButtonToolbar
-                    title={this.props.toolbarButtonCaption}
-                    btnByTitleCaption={this.props.btnByTitleCaption}
-                    btnByGenreCaption={this.props.btnByGenreCaption}
-                    btnSearchCaption={this.props.btnSearchCaption} />
+                <SearchButtonToolbar />
             </Form>
         );
     }
