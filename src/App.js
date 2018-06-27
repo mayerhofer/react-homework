@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider, connect } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import propTypes from 'prop-types';
 
 import * as texts from './constants/pageTexts';
 import AppHeader from './components/AppHeader';
@@ -21,32 +23,23 @@ homeBody.background = background;
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isReady: false,
-        };
-    }
-
-    componentDidMount() {
-        if (!this.props.movies.data.length) {
-            this.props.loadMovies();
-        }
     }
 
     render() {
         return (
-            <Provider store={configureStore}>
-                <AppHeader title={texts.APP_HEADER_TITLE} />
-                <AppContainer />
+            <Provider store={this.props.store}>
+                <PersistGate loading={null} persistor={this.props.persistor}>
+                    <AppHeader title={texts.APP_HEADER_TITLE} />
+                    <AppContainer />
+                </PersistGate>
             </Provider>
         );
     }
 }
 
-function mapStateToProps(state) {
-    return {movies: state.movies.data};
-}
-function mapDispatchToProps(dispatch) {
-    return {loadMovies: () => dispatch(loadMovies())};
+App.propTypes = {
+    store: propTypes.object.isRequired,
+    persistor: propTypes.object.isRequired
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

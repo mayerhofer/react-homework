@@ -30,11 +30,11 @@ const loadStatus = (state = {
 
 const data = (state = null, action) => {
     switch (action.type) {
-        case MOVIE_DATA_SET:
+        case types.MOVIE_DATA_SET:
             return {
                 ...action.data
             };
-        case MOVIE_DATA_CLEAR:
+        case types.MOVIE_DATA_CLEAR:
             return null;
         default:
             return state;
@@ -43,7 +43,7 @@ const data = (state = null, action) => {
 
 const id = (state = null, action) => {
     switch (action.type) {
-        case MOVIE_DATA_GET:
+        case types.MOVIE_DATA_GET:
             return action.id;
         default:
             return state;

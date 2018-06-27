@@ -1,5 +1,5 @@
 import { applyMiddleware, createStore, compose } from 'redux';
-import { REHYDRATE, PURGE, persistCombineReducers, persistStore } from 'redux-persist';
+import { REHYDRATE, PURGE, persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
 
@@ -11,7 +11,7 @@ const config = {
     storage,
     whitelist: ['movies']
 }
-let reducer = persistCombineReducers(config, rootReducer);
+let reducer = persistReducer(config, rootReducer);
 
 const configureStore = () => {
     const store = createStore(reducer, undefined, compose(applyMiddleware( ... middlewares), ));
