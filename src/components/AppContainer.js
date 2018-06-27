@@ -5,11 +5,11 @@ import ErrorBoundary from './ErrorBoundary';
 
 class AppContainer extends React.Component {
 
-    // componentDidMount() {
-    //     if (!this.props.movies.data.length) {
-    //         this.props.loadMovies();
-    //     }
-    // }
+    componentDidMount() {
+        if (!this.props.movies.data.length) {
+            this.props.loadMovies();
+        }
+    }
 
     render() {
         return (

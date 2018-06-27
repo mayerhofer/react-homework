@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Form, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+
+import * as pageTexts from '../constants/pageTexts';
+
+// TODO: remover imports
 import ReactDOM from 'react-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { Form, FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap';
 
 import SearchButtonToolbar from './SearchButtonToolbar';
-import {search} from '../actions/search';
+import setTextSearchRx from '../reducers/setTextSearchRx';
+import { setSearchText } from '../actions/search';
 import * as filters from '../constants/filters';
+import * as types from '../constants/actionTypes';
 
 const formStyle = {
     paddingRight: '20px',
@@ -15,82 +21,55 @@ const formStyle = {
     maxWidth: 1200,
 }
 
-class SearchBox extends React.Component {
+// handleSetFilterByTitle(e) {
+//     e.preventDefault();
+//     this.setState({
+//         searchText: this.state.searchText,
+//         searchFilter: filters.SEARCH_BY_TITLE
+//     });
+// }
+// handleSetFilterByGenre(e) {
+//     e.preventDefault();
+//     this.setState({
+//         searchText: this.state.searchText,
+//         searchFilter: filters.SEARCH_BY_GENRE
+//     });
+// }
 
-    constructor(props) {
-        super(props);
-        this.state = { searchText: '', selectedFilter: filters.SEARCH_BY_TITLE }
-    }
+// handleChange(e) {
+//     try {
+//         if (e == null)
+//             return;
+//         else if (e.target == null)
+//             return;
 
-    // SOURCE COMMENTED: IT WILL ACCEPT ANY INPUT
-    getValidationState() {
-        // const length = this.state.searchText.length;
-        // if (length > 1) return 'success';
-        // else if (length > 0) return 'error';
-        return null;
-    }
+//         this.setState({ searchText: e.target.value });
+//         console.log(setTextSearchRx);
+//         this.props.setTextSearch(this.state, setSearchText(e.target.value));
+//     } catch (err) {
+//         console.log(err.message);
+//     }
+// }
 
-    handleSetFilterByTitle(e) {
-        e.preventDefault();
-        this.setState({
-            searchText: this.state.searchText,
-            searchFilter: filters.SEARCH_BY_TITLE
-        });
-    }
-
-    handleSetFilterByGenre(e) {
-        e.preventDefault();
-        this.setState({
-            searchText: this.state.searchText,
-            searchFilter: filters.SEARCH_BY_GENRE
-        });
-    }
-
-    handleChange(e) {
-        try {
-            if (e == null)
-                return;
-            else if (e.target == null)
-                return;
-
-            console.log(e.target.value);
-
-            this.setState({ searchText: e.target.value });
-        } catch (err) {
-            console.log(err.message);
-        }
-    }
-
-    render() {
-        return (
-            <Form style={formStyle}>
-                <FormGroup controlId="searchBox" validationState={this.getValidationState()}>
-                <ControlLabel>{this.props.title}</ControlLabel>
-                <FormControl
-                    type="text"
-                    value={this.state.searchText}
-                    placeholder={this.props.caption}
-                    onChange={this.handleChange.bind(this)} />
-                </FormGroup>
-                <FormControl.Feedback />
-                {/* <HelpBlock>At least two letters. If not found, no results will be displayed.</HelpBlock> */}
-                <SearchButtonToolbar
-                    title={this.props.toolbarButtonCaption}
-                    btnByTitleCaption={this.props.btnByTitleCaption}
-                    btnByGenreCaption={this.props.btnByGenreCaption}
-                    onSetByTitle={this.handleSetFilterByTitle}
-                    onSetByGenre={this.handleSetFilterByGenre} />
-            </Form>
-        );
-    }
+const SearchBox = ({ onChange }) => {
+    return (
+        <Form style={formStyle}>
+            <FormGroup controlId="searchBox">
+            <ControlLabel>{pageTexts.CAPTION_SEARCH_TITLE}</ControlLabel>
+            <FormControl
+                type="text"
+                value={this.state.searchText}
+                placeholder={pageTexts.CAPTION_SEARCH_FIELD}
+                onChange={(e) => onChange(e.target.value)} />
+            </FormGroup>
+            <FormControl.Feedback />
+            <SearchButtonToolbar />
+        </Form>
+    );
 }
 
-SearchBox.defaultProps = {
-    btnByGenreCaption: 'GENRE',
-    btnByTitleCaption: 'TITLE',
-    toolbarButtonCaption: 'SEARCH BY',
-    caption: 'Search ...',
-    title: 'FIND YOUR MOVIE'
+SearchBox.propTypes = {
+    onChange: PropTypes.func
 }
 
 function mapStateToProps(state) {
@@ -100,4 +79,8 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(SearchBox);
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({setTextSearch: setTextSearchRx}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBox);
