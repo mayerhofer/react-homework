@@ -13,12 +13,15 @@ describe('ErrorBoundary Component', () => {
     });
 
     it('should render error message component', () => {
-        const component = mount(<ErrorBoundary />);
-        component.setState({
-            error: 'Error Name',
-            errorInfo: 'Error information'
-        });
-        expect(component).toContain('Error information');
-        //expect(render(<ErrorBoundary><div>{thrower()}</div></ErrorBoundary>).find('div.details').exists()).toBe(true);
+        const ComponentWithError = () => {
+            throw new Error('Error message');
+        }
+        const nativeConsoleError = console.error;
+        const error = jest.fn();
+        console.error = error;
+        const component = mount(<ErrorBoundary><ComponentWithError /></ErrorBoundary>);
+        console.error = nativeConsoleError;
+        expect(component.instance().state.hasError).toBeTruthy();
+        expect(component.instance().state.error.message).toEqual('Error message');
     });
 });
