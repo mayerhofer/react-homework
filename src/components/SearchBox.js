@@ -53,7 +53,9 @@ class SearchBox extends React.Component {
             else if (e.target == null)
                 return;
 
-            this.setState({ value: e.target.value });
+            console.log(e.target.value);
+
+            this.setState({ searchText: e.target.value });
         } catch (err) {
             console.log(err.message);
         }

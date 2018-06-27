@@ -14,9 +14,18 @@ class SearchButtonToolbar extends React.Component {
         super(props);
 
         if (this.props.filter === filters.SEARCH_BY_TITLE)
-            this.state = {searchFilter: this.props.filter, btnByTitleStyle: 'danger', btnByGenreStyle: 'default'};
+            this.state = {
+                searchFilter: this.props.filter, 
+                btnByTitleStyle: 'danger', 
+                btnByGenreStyle: 'default',
+                onSetByTitle: this.props.onSetByTitle
+            };
         else
-            this.state = {searchFilter: this.props.filter, btnByTitleStyle: 'default', btnByGenreStyle: 'danger'};
+            this.state = {
+                searchFilter: this.props.filter, 
+                btnByTitleStyle: 'default', 
+                btnByGenreStyle: 'danger'
+            };
     }
 
     searchByTitle(e) {
@@ -25,7 +34,6 @@ class SearchButtonToolbar extends React.Component {
             btnByTitleStyle: 'danger',
             btnByGenreStyle: 'default'
         });
-        this.props.onSetByTitle(e);
     }
     searchByGenre(e) {
         this.setState({
@@ -33,7 +41,6 @@ class SearchButtonToolbar extends React.Component {
             btnByTitleStyle: 'default',
             btnByGenreStyle: 'danger'
         });
-        this.props.onSetByGenre(e);
     }
 
     render() {
