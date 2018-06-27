@@ -6,25 +6,25 @@
 
 
 import { combineReducers } from 'redux';
-import { MOVIE_LOADING_START, MOVIE_LOADING_SUCCESS, MOVIE_LOADING_ERROR, MOVIE_DATA_GET, MOVIE_DATA_SET, MOVIE_DATA_CLEAR } from '../constants/actionTypes';
+import * as types from '../constants/actionTypes';
 
 const loadStatus = (state = {
     isLoading: false,
     error: null
 }, action) => {
     switch (action.type) {
-        case MOVIE_LOADING_START:
+        case types.MOVIE_LOADING_START:
             return {
                 ...state,
                 isLoading: true
             };
-        case MOVIE_LOADING_SUCCESS:
+        case types.MOVIE_LOADING_SUCCESS:
             return {
                 ...state,
                 isLoading: false,
                 error: null
             };
-        case MOVIE_LOADING_ERROR:
+        case types.MOVIE_LOADING_ERROR:
             return {
                 ...state,
                 isLoading: false,
