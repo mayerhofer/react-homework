@@ -1,10 +1,22 @@
 import { applyMiddleware, createStore, compose } from 'redux';
-import { autoRehydrate } from 'redux-persist';
+import { REHYDRATE, PURGE, persistCombineReducers, persistStore } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import thunk from 'redux-thunk';
 
 import rootReducer from "../reducers/rootReducer";
 
-const middlewares = [];
+const middlewares = [thunk];
+const config = {
+    key: 'primary',
+    storage,
+    whitelist: ['movies']
+}
+let reducer = persistCombineReducers(config, rootReducer);
 
-const store = createStore(rootReducer, undefined, compose(applyMiddleware( ... middlewares), autoRehydrate()));
+const configureStore = () => {
+    const store = createStore(reducer, undefined, compose(applyMiddleware( ... middlewares), ));
+    const persistor = persistStore(store, null, () => { store.getState() });
+    return { store, persistor };
+}
 
-export default store;
+export default configureStore;

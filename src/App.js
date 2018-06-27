@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { persistStore } from 'redux-persist';
+import { Provider, connect } from 'react-redux';
 
 import * as texts from './constants/pageTexts';
 import AppHeader from './components/AppHeader';
 import AppContainer from './components/AppContainer';
 import ErrorBoundary from './components/ErrorBoundary';
-import store from './store/configureStore';
 import background from './images/netflix-background-8.png';
-import { connect } from 'http2';
-
+import configureStore from './store/configureStore';
 
 const sectionStyle = {
     width: "100%",
@@ -37,12 +34,10 @@ class App extends Component {
 
     render() {
         return (
-            <ErrorBoundary message={texts.ERROR_BOUNDARY_APP_MESSAGE}>
-                <Provider store={store}>
-                    <AppHeader title={texts.APP_HEADER_TITLE} />
-                    <AppContainer />
-                </Provider>
-            </ErrorBoundary>
+            <Provider store={configureStore}>
+                <AppHeader title={texts.APP_HEADER_TITLE} />
+                <AppContainer />
+            </Provider>
         );
     }
 }
