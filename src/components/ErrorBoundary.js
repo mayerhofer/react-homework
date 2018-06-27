@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 
 class ErrorBoundary extends React.Component {
     constructor(props) {
       super(props);
-      this.state = { hasError: false };
+      this.state = { hasError: false, error: undefined, errorInfo: undefined };
     }
   
     componentDidCatch(error, info) {
       // Display fallback UI
-      this.setState({ hasError: true });
+      this.setState({ hasError: true, error: error, errorInfo: info });
       // You can also log the error to an error reporting service
       //logErrorToMyService(error, info);
     }
@@ -23,13 +23,17 @@ class ErrorBoundary extends React.Component {
                 <details style={{ whiteSpace: 'pre-wrap' }}>
                     {this.state.error && this.state.error.toString()}
                     <br />
-                    {this.state.errorInfo.componentStack}
+                    {this.state.errorInfo && this.state.errorInfo.componentStack}
                 </details>
             </div>
         );
       }
       return this.props.children;
     }
+}
+
+ErrorBoundary.propTypes = {
+  children: PropTypes.node
 }
 
 export default ErrorBoundary;
