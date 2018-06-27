@@ -15,11 +15,13 @@ describe('movie async actions', () => {
     });
 
     it ('should create MOVIE_LOAD_SUCCESS when loading movies has been done', () => {
-        fetchMock.getOnce('/movies', { body: { movies: ['test object'] }, headers: { 'content-type': 'application/json' }});
+        fetchMock.getOnce('*', { body: { movies: ['test object'] }, headers: { 'content-type': 'application/json' }});
 
         const expectedActions = [
             { type: types.MOVIE_LOADING_START },
-            { type: types.MOVIE_LOADING_SUCCESS, body: { movies: ['test object'] } }
+            { type: types.MOVIE_LOADING_SUCCESS },
+            { type: types.MOVIE_DATA_SET, data: undefined, total: undefined }
+
         ];
         const store = mockStore({ movies: [] });
 
