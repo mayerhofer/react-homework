@@ -2,25 +2,35 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { ButtonToolbar, Button, Label, Grid, Row, Col, Overlay } from 'react-bootstrap';
 
+import * as filters from '../constants/filters';
+import * as pageTexts from '../constants/pageTexts';
+
 class SearchButtonToolbar extends React.Component {
 
     constructor(props) {
         super(props);
 
-        this.state = {btnByTitleStyle: 'danger', btnByGenreStyle: 'default'}
+        if (this.props.filter === filters.SEARCH_BY_TITLE)
+            this.state = {searchFilter: this.props.filter, btnByTitleStyle: 'danger', btnByGenreStyle: 'default'};
+        else
+            this.state = {searchFilter: this.props.filter, btnByTitleStyle: 'default', btnByGenreStyle: 'danger'};
     }
 
-    searchByTitle() {
+    searchByTitle(e) {
         this.setState({
+            searchFilter: filters.SEARCH_BY_TITLE,
             btnByTitleStyle: 'danger',
             btnByGenreStyle: 'default'
         });
+        this.props.onSetByTitle(e);
     }
-    searchByGenre() {
+    searchByGenre(e) {
         this.setState({
+            searchFilter: filters.SEARCH_BY_GENRE,
             btnByTitleStyle: 'default',
             btnByGenreStyle: 'danger'
         });
+        this.props.onSetByGenre(e);
     }
 
     render() {
@@ -35,7 +45,7 @@ class SearchButtonToolbar extends React.Component {
                             <Button bsStyle={this.state.btnByGenreStyle} onClick={this.searchByGenre.bind(this)}>{this.props.btnByGenreCaption}</Button>
                         </Col>
                         <Col xs={6} sm={3} md={6} lg={7}></Col>
-                        <Col xs={6} sm={2} md={1} lg={1}><Button type="submit" bsStyle="danger">{this.props.btnSearchCaption}</Button></Col>
+                        <Col xs={6} sm={2} md={1} lg={1}><Button type="submit" bsStyle="danger">{pageTexts.CAPTION_SEARCH_BUTTON}</Button></Col>
                     </Row>
                 </Grid>
             </ButtonToolbar>

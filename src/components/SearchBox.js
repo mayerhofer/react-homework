@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Form, FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap';
+
 import SearchButtonToolbar from './SearchButtonToolbar';
+import {search} from '../actions/search';
+import * as filters from '../constants/filters';
 
 const formStyle = {
     paddingRight: '20px',
@@ -14,14 +19,31 @@ class SearchBox extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { value: '' }
+        this.state = { searchText: '', selectedFilter: filters.SEARCH_BY_TITLE }
     }
 
+    // SOURCE COMMENTED: IT WILL ACCEPT ANY INPUT
     getValidationState() {
-        // const length = this.state.value.length;
+        // const length = this.state.searchText.length;
         // if (length > 1) return 'success';
         // else if (length > 0) return 'error';
         return null;
+    }
+
+    handleSetFilterByTitle(e) {
+        e.preventDefault();
+        this.setState({
+            searchText: this.state.searchText,
+            searchFilter: filters.SEARCH_BY_TITLE
+        });
+    }
+
+    handleSetFilterByGenre(e) {
+        e.preventDefault();
+        this.setState({
+            searchText: this.state.searchText,
+            searchFilter: filters.SEARCH_BY_GENRE
+        });
     }
 
     handleChange(e) {
@@ -44,17 +66,18 @@ class SearchBox extends React.Component {
                 <ControlLabel>{this.props.title}</ControlLabel>
                 <FormControl
                     type="text"
-                    value={this.state.value}
+                    value={this.state.searchText}
                     placeholder={this.props.caption}
                     onChange={this.handleChange.bind(this)} />
                 </FormGroup>
                 <FormControl.Feedback />
-                <HelpBlock>At least two letters. If not found, no results will be displayed.</HelpBlock>
+                {/* <HelpBlock>At least two letters. If not found, no results will be displayed.</HelpBlock> */}
                 <SearchButtonToolbar
                     title={this.props.toolbarButtonCaption}
                     btnByTitleCaption={this.props.btnByTitleCaption}
                     btnByGenreCaption={this.props.btnByGenreCaption}
-                    btnSearchCaption={this.props.btnSearchCaption} />
+                    onSetByTitle={this.handleSetFilterByTitle}
+                    onSetByGenre={this.handleSetFilterByGenre} />
             </Form>
         );
     }
@@ -63,10 +86,16 @@ class SearchBox extends React.Component {
 SearchBox.defaultProps = {
     btnByGenreCaption: 'GENRE',
     btnByTitleCaption: 'TITLE',
-    btnSearchCaption: 'SEARCH',
     toolbarButtonCaption: 'SEARCH BY',
     caption: 'Search ...',
     title: 'FIND YOUR MOVIE'
 }
 
-export default SearchBox;
+function mapStateToProps(state) {
+    return {
+        searchText: state.searchText,
+        searchFilter: state.selectedFilter
+    }
+}
+
+export default connect(mapStateToProps)(SearchBox);
