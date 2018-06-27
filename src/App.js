@@ -19,10 +19,10 @@ class App extends Component {
     render() {
 
         return (
-            <ErrorBoundary message="We had a major error in application. Please wait for our support team to fix.">
+            <div>
                 <AppHeader title="Netflix Roulette" />
                 <AppContainer />
-            </ErrorBoundary>
+            </div>
         );
     }
 }
