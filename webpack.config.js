@@ -6,7 +6,11 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = env => {
 
     return {
-        entry: ['./src/index.js'],
+        entry: [
+            './src/index.js',
+            'babel-polyfill',
+            'react-hot-loader/patch',
+        ],
         mode: env.devOrProdMode, // 'development', 'production' or 'none'
         output: {
             path: path.join(__dirname, 'build'),
@@ -28,7 +32,7 @@ module.exports = env => {
         devServer: {
             contentBase: path.join(__dirname, 'build'),
             compress: true,
-            port: 3000
+            port: 3000,
         },
         module: {
             rules: [

@@ -1,9 +1,7 @@
-import { combineReducers } from 'redux';
-
 import * as types from '../constants/actionTypes';
 import * as filters from '../constants/filters';
 
-const filter = (state = filters.SEARCH_BY_TITLE, action) => {
+const setSearchFilterRx = (state = filters.SEARCH_BY_TITLE, action) => {
     switch (action.type) {
         case types.SET_SEARCH_FILTER:
             return action.value;
@@ -12,9 +10,4 @@ const filter = (state = filters.SEARCH_BY_TITLE, action) => {
     }
 }
 
-const search = combineReducers({
-    filter,
-    //text
-});
-
-export default search;
+export default setSearchFilterRx;

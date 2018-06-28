@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Provider, connect } from 'react-redux';
+import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import propTypes from 'prop-types';
 
-import * as texts from './constants/pageTexts';
 import AppHeader from './components/AppHeader';
 import AppContainer from './components/AppContainer';
 import ErrorBoundary from './components/ErrorBoundary';
@@ -30,7 +29,7 @@ class App extends Component {
         return (
             <Provider store={this.props.store}>
                 <PersistGate loading={null} persistor={this.props.persistor}>
-                    <AppHeader title={texts.APP_HEADER_TITLE} />
+                    <AppHeader />
                     <AppContainer />
                 </PersistGate>
             </Provider>

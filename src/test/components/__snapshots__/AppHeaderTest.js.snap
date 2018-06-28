@@ -28,7 +28,15 @@ initialize {
                       "href": "#home",
                       "style": "color:red",
                     },
-                    "children": Array [],
+                    "children": Array [
+                      Object {
+                        "data": "Netflix Roulette",
+                        "next": null,
+                        "parent": [Circular],
+                        "prev": null,
+                        "type": "text",
+                      },
+                    ],
                     "name": "a",
                     "namespace": "http://www.w3.org/1999/xhtml",
                     "next": null,

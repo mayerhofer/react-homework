@@ -3,11 +3,12 @@ import { combineReducers } from 'redux';
 import movie from './movie';
 import search from './search';
 import setTextSearchRx from './setTextSearchRx';
+import setSearchFilterRx from './setSearchFilterRx';
 
 const reducer = combineReducers({
-    movie,
-    search,
-    setTextSearchRx,
+    //movies: movie,
+    searchByFilter: setSearchFilterRx,
+    textFromSearchField: setTextSearchRx,
 });
 
 export default reducer;
