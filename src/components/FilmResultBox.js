@@ -9,14 +9,15 @@ class FilmResultBox extends React.Component {
     render() {
         return (
             <Grid>
-                {this.props.movies.map(movie => <FilmDetail {...{ movie }} />)}
+                <Row>{this.props.movies.length}</Row>
+                {this.props.movies.map(movie => <Col key={movie.id}><FilmDetail {...{ movie }} /></Col>)}
             </Grid>
         );
     }
 }
 
 function mapStateToProps(state) {
-    return { movies: state.movies ? state.movies : []};
+    return { movies: state.movies && state.movies.data && Array.isArray(state.movies.data) ? state.movies.data : new Array()};
 }
 
 export default connect(mapStateToProps)(FilmResultBox);

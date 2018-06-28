@@ -19,7 +19,6 @@ class SearchButtonToolbar extends React.Component {
                         <Col xs={12} sm={3} md={2} lg={2}><h4>{pageTexts.CAPTION_SEARCH_TOOLBAR}</h4></Col>
                         <Col xs={12} sm={2} md={1} lg={1}>
                             <Button bsStyle={this.props.searchFilter === filters.SEARCH_BY_TITLE ? 'danger' : 'default'} onClick={() => this.props.setFilter(filters.SEARCH_BY_TITLE)}>{pageTexts.CAPTION_ByTITLE_BUTTON}</Button>
-                            <Label>&#160;&#160;</Label>
                             <Button bsStyle={this.props.searchFilter === filters.SEARCH_BY_GENRE ? 'danger' : 'default'} onClick={() => this.props.setFilter(filters.SEARCH_BY_GENRE)}>{pageTexts.CAPTION_ByGENRE_BUTTON}</Button>
                         </Col>
                         <Col xs={6} sm={3} md={6} lg={7}></Col>

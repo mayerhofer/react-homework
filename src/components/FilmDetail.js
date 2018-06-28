@@ -19,7 +19,7 @@ class FilmDetail extends React.Component {
 }
 
 FilmDetail.propTypes = {
-    movie: PropTypes.MovieModel
+    movie: PropTypes.object
 }
 
 export default FilmDetail;
