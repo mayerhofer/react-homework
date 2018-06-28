@@ -1,15 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {shallow, mount, render} from 'enzyme';
-import AppHeader from '../../components/AppHeader';
+import AppContainer from '../../components/AppContainer';
 
-describe('AppHeader Component', () => {
+describe('AppContainer Component', () => {
 
     it('should render without throwing an error', () => {
-        expect(render(<AppHeader />)).toMatchSnapshot();
+        expect(shallow(<AppContainer loadMovies={() => {}} />)).toMatchSnapshot();
     });
 });
-
-
-
-

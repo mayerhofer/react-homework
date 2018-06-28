@@ -1,12 +1,12 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {shallow, mount, render} from 'enzyme';
-import AppHeader from '../../components/AppHeader';
+import SearchBox from '../../components/SearchBox';
 
-describe('AppHeader Component', () => {
+describe('SearchBox Component', () => {
 
     it('should render without throwing an error', () => {
-        expect(render(<AppHeader />)).toMatchSnapshot();
+        expect(shallow(<SearchBox />)).toMatchSnapshot();
     });
 });
 

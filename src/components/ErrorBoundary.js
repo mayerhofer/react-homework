@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 class ErrorBoundary extends React.Component {
     constructor(props) {
@@ -34,7 +33,7 @@ class ErrorBoundary extends React.Component {
 }
 
 ErrorBoundary.propTypes = {
-  message: propTypes.string.isRequired
+  message: PropTypes.string.isRequired
 };
 
 ErrorBoundary.defaultProps = {

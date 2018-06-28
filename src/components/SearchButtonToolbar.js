@@ -48,7 +48,7 @@ class SearchButtonToolbar extends React.Component {
             <ButtonToolbar>
                 <Grid fluid={true}>
                     <Row className="show-grid">
-                        <Col xs={12} sm={3} md={2} lg={2}><h4>{this.props.title}</h4></Col>
+                        <Col xs={12} sm={3} md={2} lg={2}><h4>{pageTexts.CAPTION_SEARCH_TOOLBAR}</h4></Col>
                         <Col xs={12} sm={2} md={1} lg={1}>
                             <Button bsStyle={this.state.btnByTitleStyle} onClick={this.searchByTitle.bind(this)}>{pageTexts.CAPTION_ByTITLE_BUTTON}</Button>
                             <Label>&#160;&#160;</Label>

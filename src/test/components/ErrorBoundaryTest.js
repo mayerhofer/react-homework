@@ -23,6 +23,5 @@ describe('ErrorBoundary Component', () => {
         console.error = nativeConsoleError;
         expect(component.instance().state.hasError).toBeTruthy();
         expect(component.instance().state.error.message).toEqual('Error message');
-        //expect(render(<ErrorBoundary><div>{thrower()}</div></ErrorBoundary>).find('div.details').exists()).toBe(true);
     });
 });
