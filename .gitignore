@@ -6,5 +6,6 @@
 /build
 /dist
 /coverage
+/assets
 
 /src/test/components/__snapshots__

@@ -5,12 +5,14 @@ import { Grid, Col, Row } from 'react-bootstrap';
 import SearchButtonToolbar from './FilmDetail';
 import FilmDetail from './FilmDetail';
 
-const FilmResultBox = () => {
-    return (
-        <Grid>
-            {this.props.movies.map(movie => <FilmDetail {...{ movie }} />)}
-        </Grid>
-    );
+class FilmResultBox extends React.Component {
+    render() {
+        return (
+            <Grid>
+                {this.props.movies.map(movie => <FilmDetail {...{ movie }} />)}
+            </Grid>
+        );
+    }
 }
 
 function mapStateToProps(state) {

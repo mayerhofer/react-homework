@@ -13,7 +13,7 @@ export const fetchData = async ({path, params}) => {
     const data = await fetch (
         glue`${endpoint}${path}${generateQueryString(params)}`, {
             method: 'GET',
-            mode: 'cros'
+            mode: 'cors'
         }
     );
     return await data.json();

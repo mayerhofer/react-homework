@@ -7,8 +7,8 @@ module.exports = env => {
 
     return {
         entry: [
-            './src/index.js',
             'babel-polyfill',
+            './src/index.js',
             'react-hot-loader/patch',
         ],
         mode: env.devOrProdMode, // 'development', 'production' or 'none'

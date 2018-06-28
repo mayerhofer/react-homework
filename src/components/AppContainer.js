@@ -6,9 +6,9 @@ import ErrorBoundary from './ErrorBoundary';
 class AppContainer extends React.Component {
 
     componentDidMount() {
-        if ((!this.props.movies) || !this.props.movies.data.length) {
-            this.props.loadMovies();
-        }
+        // if ((!this.props.movies) || !this.props.movies.data.length) {
+        //     this.props.loadMovies();
+        // }
     }
 
     render() {

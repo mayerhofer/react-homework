@@ -6,6 +6,12 @@ import FilmResultBox from '../../components/FilmResultBox';
 describe('FilmResultBox Component', () => {
 
     it('should render without throwing an error', () => {
-        expect(shallow(<FilmResultBox />)).toMatchSnapshot();
+        const store = {
+            getState: () => ({
+            }),
+            dispatch: () => {},
+            subscribe: () => {}
+        }
+        expect(shallow(<FilmResultBox store={store} />)).toMatchSnapshot();
     });
 });

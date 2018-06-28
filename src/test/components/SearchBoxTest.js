@@ -6,6 +6,12 @@ import SearchBox from '../../components/SearchBox';
 describe('SearchBox Component', () => {
 
     it('should render without throwing an error', () => {
-        expect(shallow(<SearchBox />)).toMatchSnapshot();
+        const store = {
+            getState: () => ({
+            }),
+            dispatch: () => {},
+            subscribe: () => {}
+        }
+        expect(shallow(<SearchBox store={store} />)).toMatchSnapshot();
     });
 });
