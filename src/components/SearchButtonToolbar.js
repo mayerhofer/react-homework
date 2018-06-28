@@ -22,7 +22,7 @@ class SearchButtonToolbar extends React.Component {
                             <Button bsStyle={this.props.searchFilter === filters.SEARCH_BY_GENRE ? 'danger' : 'default'} onClick={() => this.props.setFilter(filters.SEARCH_BY_GENRE)}>{pageTexts.CAPTION_ByGENRE_BUTTON}</Button>
                         </Col>
                         <Col xs={6} sm={3} md={6} lg={7}></Col>
-                        <Col xs={6} sm={2} md={1} lg={1}><Button bsStyle="danger" onClick={() => this.props.setFilterCriteria(this.props.searchText, this.props.searchFilter)}>{pageTexts.CAPTION_SEARCH_BUTTON}</Button></Col>
+                        <Col xs={6} sm={2} md={1} lg={1}><Button bsStyle="danger" onClick={() => this.props.setFilterCriteria({ text: this.props.searchText, by: this.props.searchFilter})}>{pageTexts.CAPTION_SEARCH_BUTTON}</Button></Col>
                     </Row>
                 </Grid>
             </ButtonToolbar>
@@ -40,7 +40,7 @@ function mapStateToProps(state) {
 function matchDispatchToProps(dispatch) {
     return {
         setFilter: (value) => dispatch(setSearchFilter(value)),
-        setFilterCriteria: (text, filterBy) => dispatch(setFilterCriteria({text: text, filterBy: filterBy}))
+        setFilterCriteria: (filterObj) => dispatch(setFilterCriteria(filterObj))
     };
 }
 

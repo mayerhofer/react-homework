@@ -3,7 +3,7 @@ import * as filters from '../constants/filters';
 
 import { fetchMovie } from '../servers/movieSvc';
 
-const setSearchFilterRx = (state = filters.SEARCH_BY_TITLE, action) => {
+const setSearchFilterRx = (state = {text: '', by: filters.SEARCH_BY_TITLE}, action) => {
     switch (action.type) {
         case types.SET_SEARCH_RESULTS_CRITERIA:
             return action.value;

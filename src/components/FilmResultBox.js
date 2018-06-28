@@ -4,20 +4,37 @@ import { Grid, Col, Row } from 'react-bootstrap';
 
 import SearchButtonToolbar from './FilmDetail';
 import FilmDetail from './FilmDetail';
+import * as filters from '../constants/filters';
 
 class FilmResultBox extends React.Component {
+    checkMovie(movie) {
+        const text = this.props.criteria.text;
+        if (this.props.criteria.by === filters.SEARCH_BY_TITLE)
+            return movie.title.includes(text);
+        
+        return movie.genres.some((genre) => { return genre.includes(text); });
+    }
+
     render() {
         return (
-            <Grid>
-                <Row>{this.props.movies.length}</Row>
-                {this.props.movies.map(movie => <Col key={movie.id}><FilmDetail {...{ movie }} /></Col>)}
+            <Grid fluid={true}>
+                {
+                    this.props.movies.filter(this.checkMovie.bind(this)).map(movie => 
+                        <Col key={movie.id} xs={6} sm={3} md={6} lg={3}>
+                            <FilmDetail {...{ movie }} />
+                        </Col>
+                    )
+                }
             </Grid>
         );
     }
 }
 
 function mapStateToProps(state) {
-    return { movies: state.movies && state.movies.data && Array.isArray(state.movies.data) ? state.movies.data : new Array()};
+    return {
+        movies: state.movies && state.movies.data && Array.isArray(state.movies.data) ? state.movies.data : new Array(),
+        criteria: state.searchFilterCriteria
+    };
 }
 
 export default connect(mapStateToProps)(FilmResultBox);
