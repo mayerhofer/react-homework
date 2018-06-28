@@ -1,11 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {shallow, mount, render} from 'enzyme';
-import SearchBox from '../../components/SearchBox';
+import FilmResultBox from '../../components/FilmResultBox';
 
-describe('SearchBox Component', () => {
+describe('FilmResultBox Component', () => {
 
     it('should render without throwing an error', () => {
-        expect(shallow(<SearchBox />)).toMatchSnapshot();
+        expect(shallow(<FilmResultBox />)).toMatchSnapshot();
     });
 });

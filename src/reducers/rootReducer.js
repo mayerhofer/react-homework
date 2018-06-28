@@ -6,7 +6,7 @@ import setTextSearchRx from './setTextSearchRx';
 import setSearchFilterRx from './setSearchFilterRx';
 
 const reducer = combineReducers({
-    //movies: movie,
+    movies: movie,
     searchByFilter: setSearchFilterRx,
     textFromSearchField: setTextSearchRx,
 });
