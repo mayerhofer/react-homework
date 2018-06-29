@@ -14,7 +14,7 @@ const filmDetailDivStyle = {
 class FilmDetail extends React.Component {
     render() {
         return (
-            <div style={filmDetailDivStyle}>
+            <div style={filmDetailDivStyle} onClick={ history.pushState(null, '', '/movie/' + this.props.movie.id) }>
                 <Thumbnail src={this.props.movie.poster_path} alt="description">
                     <h4>{this.props.movie.title}&nbsp;<Badge>{this.props.movie.release_date.substring(0, 4)}</Badge></h4>
                     <p>{this.props.movie.genres.map((genre) => genre + ',')}</p>

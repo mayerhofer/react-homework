@@ -1,11 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Grid, Row, Col, Image } from 'react-bootstrap';
+import NotFound from './NotFound';
 
 class FilmFullDetail extends React.Component {
 
     render() {
         var movie = this.props.movies.find((movie) => movie.id == this.props.match.params.id);
+        if (!movie)
+            return (
+                <NotFound />
+            );
+
         return (
             <Grid fluid={true} style={{backgroundColor: 'black'}}>
                 <Row>
