@@ -6,23 +6,37 @@ import SearchButtonToolbar from './FilmDetail';
 import FilmDetail from './FilmDetail';
 import * as filters from '../constants/filters';
 
+import setFilterCriteria from '../actions/setFilterCriteria';
+
 class FilmResultBox extends React.Component {
+
+    componentDidMount() {
+        this.props.setFilterCriteria({text: this.props.searchText, by: this.props.filterBy});
+    }
+
     checkMovie(movie) {
-        const text = this.props.criteria.text;
-        return (this.props.criteria.by === filters.SEARCH_BY_TITLE) ?
-            movie.title.includes(text) :
-            movie.genres.some((genre) => { return genre.includes(text); });
+        let tempText = this.props.searchTextCriteria;
+        if (!tempText || {}.toString.call(tempText) === '[object Function]')
+            return false;
+        let text = tempText.toUpperCase();
+        return (this.props.filterByCriteria === filters.SEARCH_BY_TITLE) ?
+            movie.title.toUpperCase().includes(text) :
+            movie.genres.some((genre) => { return genre.toUpperCase().includes(text); });
+    }
+
+    renderMovie(movie) {
+        return (
+            <Col key={movie.id} xs={6} sm={3} md={6} lg={3}>
+                <FilmDetail {...{ movie }} />
+            </Col>
+        );
     }
 
     render() {
         return (
             <Grid fluid={true}>
                 {
-                    this.props.movies.filter(this.checkMovie.bind(this)).map(movie => 
-                        <Col key={movie.id} xs={6} sm={3} md={6} lg={3}>
-                            <FilmDetail {...{ movie }} />
-                        </Col>
-                    )
+                    this.props.movies.filter(this.checkMovie.bind(this)).map(movie => this.renderMovie(movie))
                 }
             </Grid>
         );
@@ -32,8 +46,17 @@ class FilmResultBox extends React.Component {
 function mapStateToProps(state) {
     return {
         movies: state.movies && state.movies.data && Array.isArray(state.movies.data) ? state.movies.data : new Array(),
-        criteria: state.searchFilterCriteria
+        searchText: state.textFromSearchField,
+        filterBy: state.searchByFilter,
+        searchTextCriteria: state.searchFilterCriteria.text,
+        filterByCriteria: state.searchFilterCriteria.by
     };
 }
 
-export default connect(mapStateToProps)(FilmResultBox);
+function matchDispatchToProps(dispatch) {
+    return {
+        setFilterCriteria: (filterObj) => dispatch(setFilterCriteria(filterObj))
+    };
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(FilmResultBox);
