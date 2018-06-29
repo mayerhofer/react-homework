@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
+import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import propTypes from 'prop-types';
 
-import AppHeader from './components/AppHeader';
-import AppContainer from './components/AppContainer';
-import ErrorBoundary from './components/ErrorBoundary';
+import Routes from './components/Routes';
 import background from './images/netflix-background-8.png';
 import configureStore from './store/configureStore';
 
@@ -29,8 +28,7 @@ class App extends Component {
         return (
             <Provider store={this.props.store}>
                 <PersistGate loading={null} persistor={this.props.persistor}>
-                    <AppHeader />
-                    <AppContainer />
+                    <Routes />
                 </PersistGate>
             </Provider>
         );

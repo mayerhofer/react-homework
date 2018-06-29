@@ -12,6 +12,7 @@ const formStyle = {
     paddingRight: '20px',
     paddingLeft: '20px',
     maxWidth: 1200,
+    color: 'yellow'
 }
 
 class SearchBox extends React.Component {

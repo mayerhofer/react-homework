@@ -19,8 +19,8 @@ class ErrorBoundary extends React.Component {
         // You can render any custom fallback UI
         return (
             <div>
-                <h1>{this.props.message}</h1>
-                <details style={{ whiteSpace: 'pre-wrap' }}>
+                <h1 style={{ color:'yellow' }}>{this.props.message}</h1>
+                <details style={{ whiteSpace: 'pre-wrap', color:'yellow' }}>
                     {this.state.error && this.state.error.toString()}
                     <br />
                     {this.state.errorInfo && this.state.errorInfo.componentStack}
