@@ -7,6 +7,7 @@ import * as pageTexts from '../constants/pageTexts';
 
 import SearchButtonToolbar from './SearchButtonToolbar';
 import setSearchText from '../actions/setSearchText';
+import setFilterCriteria from '../actions/setFilterCriteria';
 
 const formStyle = {
     paddingRight: '20px',
@@ -16,10 +17,15 @@ const formStyle = {
 }
 
 class SearchBox extends React.Component {
+
+    formSubmitEvent(e) {
+        this.props.setFilterCriteria({text: this.props.searchText, by: this.props.filterBy});
+        e.preventDefault();
+    }
     
     render() {
         return (
-            <Form style={formStyle}>
+            <Form style={formStyle} onSubmit={(e) => {this.formSubmitEvent(e)}}>
                 <FormGroup controlId="searchBox">
                 <ControlLabel>{pageTexts.CAPTION_SEARCH_TITLE}</ControlLabel>
                 <FormControl
@@ -38,12 +44,14 @@ class SearchBox extends React.Component {
 function mapStateToProps(state) {
     return {
         searchText: state.textFromSearchField,
+        filterBy: state.searchByFilter
     }
 }
 
 function matchDispatchToProps(dispatch) {
     return {
-        setText: (value) => dispatch(setSearchText(value))
+        setText: (value) => dispatch(setSearchText(value)),
+        setFilterCriteria: (filterObj) => dispatch(setFilterCriteria(filterObj))
     };
 }
 
