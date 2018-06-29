@@ -1,4 +1,4 @@
-import * as actions from '../../actions/movie';
+import * as actions from '../../actions/loadMovies';
 import * as types from '../../constants/actionTypes';
 
 describe('movie', () => {
@@ -6,7 +6,7 @@ describe('movie', () => {
         const expectedAction = {
             type: types.MOVIE_LOADING_SUCCESS
         }
-        expect(actions.moviesLoadingSuccess()).toEqual(expectedAction)
+        expect(actions.loadMoviesSuccess()).toEqual(expectedAction)
     });
 
     it('should create an action to notify loading returned error', () => {
@@ -18,18 +18,8 @@ describe('movie', () => {
 
     it('should create an action to notify loading started', () => {
         const expectedAction = {
-            type: types.MOVIE_LOADING_START
+            type: types.SET_LOADING_MOVIE_STATUS
         }
-        expect(actions.moviesLoadingStart()).toEqual(expectedAction)
-    });
-
-    it('should create an action to get movies from data set', () => {
-        const data = { data: 'test data', total: 'test total' };
-        const expectedAction = {
-            type: types.MOVIE_DATA_SET,
-            data: data.data,
-            total: data.total
-        }
-        expect(actions.moviesDataSet(data)).toEqual(expectedAction)
+        expect(actions.setLoadingMoviesStatus()).toEqual(expectedAction)
     });
 });

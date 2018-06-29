@@ -6,6 +6,12 @@ import AppContainer from '../../components/AppContainer';
 describe('AppContainer Component', () => {
 
     it('should render without throwing an error', () => {
-        expect(shallow(<AppContainer loadMovies={() => {}} />)).toMatchSnapshot();
+        const store = {
+            getState: () => ({
+            }),
+            dispatch: () => {},
+            subscribe: () => {}
+        }
+        expect(shallow(<AppContainer store={store} loadMovies={() => {}} />)).toMatchSnapshot();
     });
 });

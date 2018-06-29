@@ -9,10 +9,9 @@ import * as filters from '../constants/filters';
 class FilmResultBox extends React.Component {
     checkMovie(movie) {
         const text = this.props.criteria.text;
-        if (this.props.criteria.by === filters.SEARCH_BY_TITLE)
-            return movie.title.includes(text);
-        
-        return movie.genres.some((genre) => { return genre.includes(text); });
+        return (this.props.criteria.by === filters.SEARCH_BY_TITLE) ?
+            movie.title.includes(text) :
+            movie.genres.some((genre) => { return genre.includes(text); });
     }
 
     render() {

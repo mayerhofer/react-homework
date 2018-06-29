@@ -6,6 +6,12 @@ import FilmDetail from '../../components/FilmDetail';
 describe('FilmDetail Component', () => {
 
     it('should render without throwing an error', () => {
-        expect(shallow(<FilmDetail />)).toMatchSnapshot();
+        const movie = {
+            title: 'title',
+            poster_path: 'test',
+            release_date: '2019',
+            genres: ['1', '2']
+        }
+        expect(shallow(<FilmDetail movie={movie} />)).toMatchSnapshot();
     });
 });
