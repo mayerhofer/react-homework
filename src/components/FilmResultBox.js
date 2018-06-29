@@ -14,16 +14,22 @@ class FilmResultBox extends React.Component {
             movie.genres.some((genre) => { return genre.includes(text); });
     }
 
+    renderMovie(movie) {
+        return (
+            <Col key={movie.id} xs={6} sm={3} md={6} lg={3}>
+                <FilmDetail {...{ movie }} />
+            </Col>
+        );
+    }
+
     render() {
         return (
             <Grid fluid={true}>
+                <Row>
                 {
-                    this.props.movies.filter(this.checkMovie.bind(this)).map(movie => 
-                        <Col key={movie.id} xs={6} sm={3} md={6} lg={3}>
-                            <FilmDetail {...{ movie }} />
-                        </Col>
-                    )
+                    this.props.movies.filter(this.checkMovie.bind(this)).map((movie, index) => this.renderMovie(movie))
                 }
+                </Row>
             </Grid>
         );
     }
