@@ -16,10 +16,15 @@ const formStyle = {
 }
 
 class SearchBox extends React.Component {
+
+    formSubmitEvent(e) {
+        this.props.setFilterCriteria({text: this.props.searchText, by: this.props.filterBy});
+        e.preventDefault();
+    }
     
     render() {
         return (
-            <Form style={formStyle} onClick={() => {this.props.setFilterCriteria({text: this.props.searchText, by: this.props.filterBy}); return false;}}>
+            <Form style={formStyle} onSubmit={(e) => {this.formSubmitEvent(e)}}>
                 <FormGroup controlId="searchBox">
                 <ControlLabel>{pageTexts.CAPTION_SEARCH_TITLE}</ControlLabel>
                 <FormControl
