@@ -1,4 +1,4 @@
-import * as actions from '../../actions/loadMovies';
+import * as actions from '../../client/actions/loadMovies';
 import * as types from '../../constants/actionTypes';
 
 describe('movie', () => {

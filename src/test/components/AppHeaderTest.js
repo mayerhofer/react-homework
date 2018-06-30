@@ -1,7 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {shallow, mount, render} from 'enzyme';
-import AppHeader from '../../components/AppHeader';
+
+import AppHeader from '../../client/components/AppHeader';
 
 describe('AppHeader Component', () => {
 

@@ -1,4 +1,4 @@
-import setSearchText from '../../actions/setSearchText';
+import setSearchText from '../../client/actions/setSearchText';
 import * as types from '../../constants/actionTypes';
 import * as filters from '../../constants/filters';
 

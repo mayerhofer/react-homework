@@ -1,4 +1,4 @@
-import setFilterCriteria from '../../actions/setFilterCriteria';
+import setFilterCriteria from '../../client/actions/setFilterCriteria';
 import * as types from '../../constants/actionTypes';
 import * as filters from '../../constants/filters';
 

@@ -1,7 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {shallow, mount, render} from 'enzyme';
-import AppContainer from '../../components/AppContainer';
+
+import AppContainer from '../../client/components/AppContainer';
 
 describe('AppContainer Component', () => {
 
