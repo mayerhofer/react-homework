@@ -8,7 +8,7 @@ Object.assign(global, {
 });
 
 const app = express();
-const port = 8000;
+const port = 4000;
 
 app.use(express.static('./build/client'));
 
