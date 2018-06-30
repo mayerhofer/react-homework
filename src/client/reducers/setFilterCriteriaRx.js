@@ -1,7 +1,7 @@
-import * as types from '../constants/actionTypes';
-import * as filters from '../constants/filters';
+import * as types from '../../constants/actionTypes';
+import * as filters from '../../constants/filters';
 
-import { fetchMovie } from '../servers/movieSvc';
+import { fetchMovie } from '../../servers/movieSvc';
 
 const setSearchFilterRx = (state = {text: '', by: filters.SEARCH_BY_TITLE}, action) => {
     switch (action.type) {

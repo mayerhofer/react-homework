@@ -1,7 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {shallow, mount, render} from 'enzyme';
-import FilmResultBox from '../../components/FilmResultBox';
+
+import FilmResultBox from '../../client/components/FilmResultBox';
 
 describe('FilmResultBox Component', () => {
 

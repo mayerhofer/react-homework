@@ -1,7 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {shallow, mount, render} from 'enzyme';
-import SearchButtonToolbar from '../../components/SearchButtonToolbar';
+
+import SearchButtonToolbar from '../../client/components/SearchButtonToolbar';
 
 describe('SearchButtonToolbar Component', () => {
 

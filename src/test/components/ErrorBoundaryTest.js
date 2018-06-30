@@ -1,8 +1,9 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {shallow, mount, render} from 'enzyme';
-import ErrorBoundary from '../../components/ErrorBoundary';
-import SearchBox from '../../components/SearchBox';
+
+import ErrorBoundary from '../../client/components/ErrorBoundary';
+import SearchBox from '../../client/components/SearchBox';
 
 describe('ErrorBoundary Component', () => {
 

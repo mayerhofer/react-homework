@@ -4,7 +4,7 @@ import { Grid, Col, Row } from 'react-bootstrap';
 
 import SearchButtonToolbar from './FilmDetail';
 import FilmDetail from './FilmDetail';
-import * as filters from '../constants/filters';
+import * as filters from '../../constants/filters';
 
 import setFilterCriteria from '../actions/setFilterCriteria';
 

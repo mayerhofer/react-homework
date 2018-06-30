@@ -1,4 +1,4 @@
-import {fetchMovies} from '../servers/movieSvc';
+import {fetchMovies} from '../../servers/movieSvc';
 import { SET_LOADING_MOVIE_STATUS, MOVIE_LOADING_ERROR, MOVIE_LOADING_SUCCESS } from '../constants/actionTypes';
 
 export const setLoadingMoviesStatus = (status) => ({

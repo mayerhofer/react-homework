@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { Button, Thumbnail, Badge } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
-import * as pageTexts from '../constants/pageTexts';
-import MovieModel from '../models/movie.model';
+import * as pageTexts from '../../constants/pageTexts';
 
 const filmDetailDivStyle = {
     maxWidth: '200px',

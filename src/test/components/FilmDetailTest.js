@@ -1,7 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {shallow, mount, render} from 'enzyme';
-import FilmDetail from '../../components/FilmDetail';
+
+import FilmDetail from '../../client/components/FilmDetail';
 
 describe('FilmDetail Component', () => {
 

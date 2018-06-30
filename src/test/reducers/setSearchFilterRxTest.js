@@ -1,4 +1,5 @@
-import setSearchFilterRx from '../../reducers/setSearchFilterRx';
+import setSearchFilterRx from '../../client/reducers/setSearchFilterRx';
+
 import * as types from '../../constants/actionTypes';
 import * as filters from '../../constants/filters';
 

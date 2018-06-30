@@ -1,4 +1,4 @@
-import setTextSearchRx from '../../reducers/setTextSearchRx';
+import setTextSearchRx from '../../client/reducers/setTextSearchRx';
 import * as types from '../../constants/actionTypes';
 
 describe('setTextSearchRx', () => {

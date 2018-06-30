@@ -1,5 +1,5 @@
-import * as types from '../constants/actionTypes';
-import initialState from '../servers/initialState';
+import * as types from '../../constants/actionTypes';
+import initialState from '../../servers/initialState';
 
 const loadMoviesRx = (state = initialState.movies, action) => {
     switch (action.type) {

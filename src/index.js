@@ -2,9 +2,9 @@ import http from 'http';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-import configureStore from './store/configureStore';
+import configureStore from './client/store/configureStore';
 import App from './App.js';
-import ErrorBoundary from './components/ErrorBoundary.js';
+import ErrorBoundary from './client/components/ErrorBoundary.js';
 import * as texts from './constants/pageTexts';
 
 const { store, persistor } = configureStore();

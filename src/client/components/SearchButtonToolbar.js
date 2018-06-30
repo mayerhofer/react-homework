@@ -4,8 +4,8 @@ import { ButtonToolbar, Button, Label, Grid, Row, Col, Overlay } from 'react-boo
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as filters from '../constants/filters';
-import * as pageTexts from '../constants/pageTexts';
+import * as filters from '../../constants/filters';
+import * as pageTexts from '../../constants/pageTexts';
 import setSearchFilter from '../actions/setSearchFilter';
 import setFilterCriteria from '../actions/setFilterCriteria';
 

@@ -5,9 +5,9 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import propTypes from 'prop-types';
 
-import Routes from './components/Routes';
+import Routes from './client/components/Routes';
 import background from './images/netflix-background-8.png';
-import configureStore from './store/configureStore';
+import configureStore from './client/store/configureStore';
 
 const sectionStyle = {
     width: "100%",

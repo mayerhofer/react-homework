@@ -2,6 +2,7 @@ import React from 'react';
 import { HashRouter as Router, Route, Switch, IndexRoute, browserHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+
 import SearchBox from './SearchBox';
 import AppContainer from './AppContainer';
 import AppHeader from './AppHeader';

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Nav, Navbar, NavItem, NavDropdown } from 'react-bootstrap';
 
-import * as pageTexts from '../constants/pageTexts';
+import * as pageTexts from '../../constants/pageTexts';
 
 const navbarStyle = {
     background: 'transparent',
