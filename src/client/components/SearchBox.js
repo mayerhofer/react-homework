@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import * as pageTexts from '../../constants/pageTexts';
 
 import SearchButtonToolbar from './SearchButtonToolbar';
-import setSearchText from '../actions/setSearchText';
+import {setSearchText} from '../actions/formActions';
 import setFilterCriteria from '../actions/setFilterCriteria';
 
 const formStyle = {

@@ -8,8 +8,8 @@
     "build:prd": "./node_modules/.bin/webpack --config ./webpack.config.js --env.devOrProdMode=production",
     "build:test": "./node_modules/.bin/webpack --config ./webpack.config-test.js ./src/test/components/AppHeaderTest.js ./build/test/testBundle.js --target node --display-error-details",
     "watch": "./node_modules/.bin/webpack-cli --watch --config ./webpack.config.js --env.devOrProdMode=development",
-    "start:dev": "./node_modules/.bin/webpack-dev-server --config ./webpack.config.js --env.devOrProdMode=development",
-    "start:prd": "./node_modules/.bin/webpack-dev-server --config ./webpack.config.js --env.devOrProdMode=production",
+    "start:dev": "node server.js & ./node_modules/.bin/webpack --config ./webpack.config.js --env.devOrProdMode=development",
+    "start:prd": "./node_modules/.bin/webpack --config ./webpack.config.js --env.devOrProdMode=production",
     "test": "jest --verbose",
     "test2": "jest --verbose --watch"
   },
@@ -25,7 +25,6 @@
   },
   "homepage": "https://github.com/mayerhofer/react-homework#readme",
   "dependencies": {
-    "expo": "^28.0.0",
     "express": "^4.16.3",
     "mini-css-extract-plugin": "^0.4.0",
     "prop-types": "^15.6.2",
@@ -39,7 +38,7 @@
     "redux": "^4.0.0",
     "redux-logger": "^3.0.6",
     "redux-persist": "^5.10.0",
-    "redux-thunk": "^2.3.0"
+    "redux-saga": "^0.16.0"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -75,7 +74,6 @@
     "enzyme-adapter-react-16": "^1.1.1",
     "fetch-mock": "^6.4.4",
     "file-loader": "^1.1.11",
-    "html-webpack-plugin": "^3.2.0",
     "image-webpack-loader": "^4.3.1",
     "jest": "^23.1.0",
     "jest-enzyme": "^6.0.1",

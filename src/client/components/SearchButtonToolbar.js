@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 import * as filters from '../../constants/filters';
 import * as pageTexts from '../../constants/pageTexts';
-import setSearchFilter from '../actions/setSearchFilter';
+import {setSearchFilter} from '../actions/formActions';
 import setFilterCriteria from '../actions/setFilterCriteria';
 
 class SearchButtonToolbar extends React.Component {
