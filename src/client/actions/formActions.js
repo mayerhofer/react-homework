@@ -1,18 +1,18 @@
 import * as types from '../../constants/actionTypes';
 
-const setSearchFilter = (value) => ({
+const setSearchFilter = value => ({
     type: types.SET_SEARCH_FILTER,
-    value: value
+    value,
 });
 
-const setSearchText = (value) => ({
+const setSearchText = value => ({
     type: types.SET_SEARCH_TEXT,
-    value: value
+    value,
 });
 
-const setSearchSort = (value) => ({
+const setSearchSort = value => ({
     type: types.SET_SEARCH_SORT,
-    value: value
+    value,
 });
 
 export {

@@ -1,14 +1,9 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import {shallow, mount, render} from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
 import ErrorBoundary from '../../client/components/ErrorBoundary';
-import SearchBox from '../../client/components/SearchBox';
 
 describe('ErrorBoundary Component', () => {
-
-    var thrower = () => {throw new Error('Component expected to throw error while rendering')};
-
     it('should render nested component without throwing an error', () => {
         expect(shallow(<ErrorBoundary><h1>Teste</h1></ErrorBoundary>)).toMatchSnapshot();
     });
@@ -16,7 +11,7 @@ describe('ErrorBoundary Component', () => {
     it('should render error message component', () => {
         const ComponentWithError = () => {
             throw new Error('Error message');
-        }
+        };
         const nativeConsoleError = console.error;
         const error = jest.fn();
         console.error = error;

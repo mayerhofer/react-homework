@@ -1,52 +1,53 @@
-import { put, call, all, takeLatest } from 'redux-saga/effects';
+import {
+    put, call, all, takeLatest,
+} from 'redux-saga/effects';
 
-import { request } from '../helpers/request';
+import { request } from '../../servers/movieSvc';
 
-import { SET_SEARCH_FILTER, SET_SEARCH_TEXT, SET_SEARCH_RESULTS_CRITERIA } from '../../constants/actionTypes';
-import { startLoading, stopLoading, showError } from '../actions/state';
-import { setSearchTerm } from '../actions/form';
-import { showResults } from '../actions/search';
+import * as actions from '../../constants/actionTypes';
+import { setLoadingMoviesStatus, moviesLoadingError, loadMoviesSuccess } from '../actions/loadMovies';
+import { setSearchText } from '../actions/formActions';
 
-export function* doSearch({ payload: { searchTerm, searchBy, sortBy } }) {
-  yield put(startLoading());
+export function* doSearch({ payload: { text, searchBy, sortBy } }) {
+    yield put(setLoadingMoviesStatus('started'));
 
-  const params = {
-    search: searchTerm,
-    searchBy,
-    sortBy,
-    sortOrder: 'asc',
-  };
+    const params = {
+        search: text,
+        searchBy,
+        sortBy,
+        sortOrder: 'asc',
+    };
 
-  try {
-    const response = yield call(request, 'movies', params);
+    try {
+        const response = yield call(request, 'movies', params);
 
-    yield put(showResults(response.data));
-  } catch (error) {
-    yield put(showError(error.message));
-  } finally {
-    yield put(stopLoading());
-  }
+        yield put(loadMoviesSuccess(response.data));
+    } catch (error) {
+        yield put(moviesLoadingError(error.message));
+    } finally {
+        yield put(setLoadingMoviesStatus('success'));
+    }
 }
 
 function* search(action) {
-  const { payload: { searchTerm } } = action;
+    const { payload: { searchTerm } } = action;
 
-  yield put(setSearchTerm(searchTerm));
+    yield put(setSearchText(searchTerm));
 
-  yield doSearch(action);
+    yield doSearch(action);
 }
 
 function* doSearchSaga() {
-  yield takeLatest(DO_SEARCH, doSearch);
+    yield takeLatest(actions.SET_SEARCH_RESULTS_CRITERIA, doSearch);
 }
 
 function* searchSaga() {
-  yield takeLatest(SEARCH, search);
+    yield takeLatest(actions.APPLY_SEARCH, search);
 }
 
 export default function* rootSaga() {
-  yield all([
-    doSearchSaga(),
-    searchSaga(),
-  ]);
+    yield all([
+        doSearchSaga(),
+        searchSaga(),
+    ]);
 }

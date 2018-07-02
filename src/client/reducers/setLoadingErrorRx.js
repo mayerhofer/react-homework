@@ -3,7 +3,7 @@ import * as filters from '../../constants/filters';
 
 const setSearchFilterRx = (state = filters.SEARCH_BY_TITLE, action) => {
     switch (action.type) {
-    case types.SET_SEARCH_FILTER:
+    case types.MOVIE_LOADING_ERROR:
         return action.value;
     default:
         return state;

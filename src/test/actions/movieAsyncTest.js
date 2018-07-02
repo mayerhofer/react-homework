@@ -1,12 +1,10 @@
 import configureMockStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
 import fetchMock from 'fetch-mock';
 
 import * as actions from '../../client/actions/loadMovies';
 import * as types from '../../constants/actionTypes';
 
-const middlewares = [thunk];
-const mockStore = configureMockStore(middlewares);
+const mockStore = configureMockStore([]);
 
 describe('movie async actions', () => {
     afterEach(() => {
@@ -14,8 +12,8 @@ describe('movie async actions', () => {
         fetchMock.restore();
     });
 
-    it ('should create MOVIE_LOAD_SUCCESS when loading movies has been done', () => {
-        fetchMock.getOnce('*', { body: { movies: ['test object'] }, headers: { 'content-type': 'application/json' }});
+    it('should create MOVIE_LOAD_SUCCESS when loading movies has been done', () => {
+        fetchMock.getOnce('*', { body: { movies: ['test object'] }, headers: { 'content-type': 'application/json' } });
 
         const expectedActions = [
             { status: 'started', type: types.SET_LOADING_MOVIE_STATUS },

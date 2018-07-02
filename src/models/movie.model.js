@@ -12,7 +12,7 @@ const MovieModel = {
     budget: PropTypes.number,
     revenue: PropTypes.number,
     genres: PropTypes.arrayOf(PropTypes.string),
-    runtime: PropTypes.number,    
-}
+    runtime: PropTypes.number,
+};
 
 export default MovieModel;

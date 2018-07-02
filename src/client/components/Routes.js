@@ -1,14 +1,13 @@
 import React from 'react';
-import { HashRouter as Router, Route, Switch, IndexRoute, browserHistory } from 'react-router-dom';
+import { StaticRouter, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import SearchBox from './SearchBox';
 import AppContainer from './AppContainer';
-import AppHeader from './AppHeader';
 import FilmFullDetail from './FilmFullDetail';
 import NotFound from './NotFound';
 import Root from './Root';
+import loadMovies from '../actions/loadMovies';
 
 class Routes extends React.Component {
     componentDidMount() {
@@ -19,27 +18,28 @@ class Routes extends React.Component {
 
     render() {
         return (
-            <Router history={browserHistory}>
+            <StaticRouter context={this.props.context} location={this.props.location}>
                 <Switch>
                     <Route exact path="/" component={Root} />
                     <Route path="/search/:filter :text" component={AppContainer} />
                     <Route path="/movie/:id" component={FilmFullDetail} />
                     <Route path="*" component={NotFound} />
                 </Switch>
-            </Router>
+            </StaticRouter>
         );
     }
 }
 
 Routes.propTypes = {
     loadMovies: PropTypes.func,
-    movies: PropTypes.arrayOf(PropTypes.object)
-}
+    movies: PropTypes.arrayOf(PropTypes.object),
+};
 
 function mapStateToProps(state) {
     return {
-        movies: state.movies && state.movies.data && Array.isArray(state.movies.data) ? state.movies.data : new Array(),
-    }
+        movies: state.movies && state.movies.data
+            && Array.isArray(state.movies.data) ? state.movies.data : [],
+    };
 }
 
 function matchDispatchToProps(dispatch) {
@@ -48,4 +48,8 @@ function matchDispatchToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(Routes);
+export default (Router, context, location) => {
+    const MyRouter = connect(mapStateToProps, matchDispatchToProps)(Routes);
+
+    return () => <MyRouter context={context} location={location} />;
+};

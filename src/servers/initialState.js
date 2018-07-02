@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 
 const initialState = {
-    movies: new Array()
-}
+    movies: [],
+};
 
 initialState.propTypes = {
-    movies: PropTypes.arrayOf(PropTypes.object)
-}
+    movies: PropTypes.arrayOf(PropTypes.object),
+};
 
 export default initialState;

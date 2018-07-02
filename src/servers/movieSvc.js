@@ -1,24 +1,23 @@
-const endpoint = 'http://react-cdp-api.herokuapp.com/';
+const HOST = 'http://react-cdp-api.herokuapp.com';
 
-const glue = (strings, ...values) => values[2] ? `${values[0]}${values[1]}?${values[2]}` : `${values[0]}${values[1]}`;
+function request(path, params = {}) {
+    const address = [HOST, path].join('/');
+    const GET = Object.keys(params)
+        .map(key => `${key}=${params[key]}`)
+        .join('&');
+    const url = [address, GET].join('?');
 
-const generateQueryString = params => (
-    params ? Object.keys(params)
-    .filter(key => params[key])
-    .map(key => [key, params[key].toString().trim()].join('='))
-    .join('&') : ''
-);
+    const headers = {
+        'Content-Type': 'application/json',
+    };
 
-export const fetchData = async ({path, params}) => {
-    const data = await fetch (
-        glue`${endpoint}${path}${generateQueryString(params)}`, {
-            method: 'GET',
-            mode: 'cors'
-        }
-    );
-    return await data.json();
-};
+    const options = {
+        method: 'GET',
+        headers,
+    };
 
-export const fetchMovies = async (params = {offset: 0, limit: 10000}) => await fetchData({path: 'movies', params});
+    return fetch(url, options)
+        .then(response => response.json());
+}
 
-export const fetchMovie = async (id) => await fetchData ( {path: `movies/${id}` } );
+export { HOST, request };

@@ -8,29 +8,29 @@ describe('setSearchFilterRx', () => {
         const expected = filters.SEARCH_BY_GENRE;
         const action = {
             type: types.SET_SEARCH_FILTER,
-            value: expected
+            value: expected,
         };
-        var state = setSearchFilterRx(filters.SEARCH_BY_TITLE, action);
+        const state = setSearchFilterRx(filters.SEARCH_BY_TITLE, action);
         expect(state).toEqual(expected);
     });
 
     it('should do nothing.', () => {
         const expected = filters.SEARCH_BY_TITLE;
         const action = {
-            type: types.SET_SEARCH_FILTER + '2',
-            value: filters.SEARCH_BY_GENRE
+            type: `${types.SET_SEARCH_FILTER}2`,
+            value: filters.SEARCH_BY_GENRE,
         };
-        var state = setSearchFilterRx(filters.SEARCH_BY_TITLE, action);
+        const state = setSearchFilterRx(filters.SEARCH_BY_TITLE, action);
         expect(state).toEqual(expected);
     });
 
     it('should do nothing.', () => {
         const expected = filters.SEARCH_BY_TITLE;
         const action = {
-            type: types.SET_SEARCH_FILTER + '2',
-            value: filters.SEARCH_BY_GENRE
+            type: `${types.SET_SEARCH_FILTER}2`,
+            value: filters.SEARCH_BY_GENRE,
         };
-        var actual = setSearchFilterRx(undefined, action);
+        const actual = setSearchFilterRx(undefined, action);
         expect(actual).toEqual(expected);
     });
 });

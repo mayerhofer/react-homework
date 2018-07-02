@@ -6,19 +6,19 @@ describe('setTextSearchRx', () => {
         const expected = 'Film name to search for';
         const action = {
             type: types.SET_SEARCH_TEXT,
-            value: expected
+            value: expected,
         };
-        var state = setTextSearchRx('Last text', action);
+        const state = setTextSearchRx('Last text', action);
         expect(state).toEqual(expected);
     });
 
     it('should do nothing.', () => {
         const expected = 'Last text';
         const action = {
-            type: types.SET_SEARCH_TEXT + '2',
-            value: 'Film name to search for'
+            type: `${types.SET_SEARCH_TEXT}2`,
+            value: 'Film name to search for',
         };
-        var state = setTextSearchRx(expected, action);
+        const state = setTextSearchRx(expected, action);
         expect(state).toEqual(expected);
     });
 });

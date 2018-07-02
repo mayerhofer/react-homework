@@ -1,13 +1,14 @@
 import React from 'react';
-import { Grid, Row, Col, Label, Button, Glyphicon } from 'react-bootstrap';
+import {
+    Grid, Row, Col, Label, Button, Glyphicon,
+} from 'react-bootstrap';
 
 const notFoundStyle = {
     align: 'center',
-    color: 'yellow'
-}
+    color: 'yellow',
+};
 
 class NotFound extends React.Component {
-
     render() {
         return (
             <Grid>
