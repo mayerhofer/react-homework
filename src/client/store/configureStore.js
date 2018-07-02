@@ -2,19 +2,28 @@ import { applyMiddleware, createStore, compose } from 'redux';
 import createSagaMiddleware, { END } from 'redux-saga';
 
 import rootReducer from '../reducers/rootReducer';
-import sagas from '../sagas/sagas';
+import rootSaga from '../sagas/sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 
-const configureStore = () => {
-    const store = createStore(rootReducer, undefined, compose(applyMiddleware(sagaMiddleware)));
+const configureStore = (initialState) => {
+    try {
+        const store = createStore(
+            rootReducer,
+            initialState,
+            compose(applyMiddleware(sagaMiddleware)),
+        );
 
-    store.runSaga = () => sagaMiddleware.run(sagas);
-    store.close = () => store.dispatch(END);
+        store.runSaga = () => sagaMiddleware.run(rootSaga);
+        store.close = () => store.dispatch(END);
 
-    store.runSaga();
+        store.runSaga();
 
-    return store;
+        return store;
+    } catch (ex) {
+        console.log(ex.message);
+        return {};
+    }
 };
 
 export default configureStore;

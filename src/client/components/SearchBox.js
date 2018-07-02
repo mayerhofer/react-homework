@@ -8,18 +8,23 @@ import * as pageTexts from '../../constants/pageTexts';
 
 import SearchButtonToolbar from './SearchButtonToolbar';
 import { setSearchText } from '../actions/formActions';
-import { setSearchFilter } from '../actions/setFilterCriteria';
+import { applySearch } from '../actions/loadMovies';
 
 const formStyle = {
     paddingRight: '20px',
     paddingLeft: '20px',
     maxWidth: 1200,
     color: 'yellow',
+    backgroundColor: '#330033',
 };
 
 class SearchBox extends React.Component {
     formSubmitEvent(e) {
-        this.props.setFilterCriteria({ text: this.props.searchText, searchBy: this.props.filterBy, sortBy: 'title' });
+        this.props.runLoad(
+            this.props.filterCriteria.searchText,
+            this.props.filterCriteria.filterBy,
+            this.props.filterCriteria.sortBy,
+        );
         e.preventDefault();
     }
 
@@ -43,15 +48,14 @@ class SearchBox extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        searchText: state.textFromSearchField,
-        filterBy: state.searchByFilter,
+        filterCriteria: state.searchFilterCriteria,
     };
 }
 
 function matchDispatchToProps(dispatch) {
     return {
         setText: value => dispatch(setSearchText(value)),
-        setFilterCriteria: filterObj => dispatch(setSearchFilter(filterObj)),
+        runLoad: (text, searchBy, sortBy) => dispatch(applySearch(text, searchBy, sortBy)),
     };
 }
 

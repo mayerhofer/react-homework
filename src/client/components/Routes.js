@@ -16,6 +16,12 @@ class Routes extends React.Component {
         }
     }
 
+    componentWillMount() {
+        if ((!this.props.movies) || !this.props.movies.length) {
+            this.props.loadMovies();
+        }
+    }
+
     render() {
         return (
             <StaticRouter context={this.props.context} location={this.props.location}>

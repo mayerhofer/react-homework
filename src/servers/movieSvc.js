@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 const HOST = 'http://react-cdp-api.herokuapp.com';
 
 function request(path, params = {}) {

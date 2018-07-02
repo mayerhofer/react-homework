@@ -6,7 +6,6 @@ import { request } from '../../servers/movieSvc';
 
 import * as actions from '../../constants/actionTypes';
 import { setLoadingMoviesStatus, moviesLoadingError, loadMoviesSuccess } from '../actions/loadMovies';
-import { setSearchText } from '../actions/formActions';
 
 export function* doSearch({ payload: { text, searchBy, sortBy } }) {
     yield put(setLoadingMoviesStatus('started'));
@@ -23,31 +22,23 @@ export function* doSearch({ payload: { text, searchBy, sortBy } }) {
 
         yield put(loadMoviesSuccess(response.data));
     } catch (error) {
+        console.log(error.message);
         yield put(moviesLoadingError(error.message));
     } finally {
         yield put(setLoadingMoviesStatus('success'));
     }
 }
 
-function* search(action) {
-    const { payload: { searchTerm } } = action;
-
-    yield put(setSearchText(searchTerm));
-
-    yield doSearch(action);
-}
-
 function* doSearchSaga() {
-    yield takeLatest(actions.SET_SEARCH_RESULTS_CRITERIA, doSearch);
-}
-
-function* searchSaga() {
-    yield takeLatest(actions.APPLY_SEARCH, search);
+    try {
+        yield takeLatest(actions.APPLY_SEARCH, doSearch);
+    } catch (error) {
+        console.log(error.message);
+    }
 }
 
 export default function* rootSaga() {
     yield all([
         doSearchSaga(),
-        searchSaga(),
     ]);
 }

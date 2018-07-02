@@ -5,11 +5,13 @@
   "main": "./src/index.js",
   "scripts": {
     "build:dev": "./node_modules/.bin/webpack --config ./webpack.config.js --env.devOrProdMode=development",
+    "build:server:dev": "./node_modules/.bin/webpack --config ./webpack.config.server.js --env.devOrProdMode=development",
     "build:prd": "./node_modules/.bin/webpack --config ./webpack.config.js --env.devOrProdMode=production",
     "build:test": "./node_modules/.bin/webpack --config ./webpack.config-test.js ./src/test/components/AppHeaderTest.js ./build/test/testBundle.js --target node --display-error-details",
     "watch": "./node_modules/.bin/webpack-cli --watch --config ./webpack.config.js --env.devOrProdMode=development",
     "start:dev": "node ./dist/server.js & ./node_modules/.bin/webpack-dev-server --config ./webpack.config.js --env.devOrProdMode=development",
     "start:prd": "./node_modules/.bin/webpack --config ./webpack.config.js --env.devOrProdMode=production",
+    "start:server": "node ./dist/server.js",
     "lint": "eslint ./src --cache --ignore-pattern .gitignore --fix",
     "test": "jest --verbose",
     "test2": "jest --verbose --watch"
@@ -27,6 +29,7 @@
   "homepage": "https://github.com/mayerhofer/react-homework#readme",
   "dependencies": {
     "express": "^4.16.3",
+    "immutable": "^3.8.2",
     "mini-css-extract-plugin": "^0.4.0",
     "node-fetch": "^2.1.2",
     "prop-types": "^15.6.2",

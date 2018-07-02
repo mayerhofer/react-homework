@@ -14,6 +14,7 @@ export const SET_SEARCH_SORT = 'SET_SEARCH_SORT';
 
 // SEARCH ACTIONS:
 export const APPLY_SEARCH = 'APPLY_SEARCH';
+export const DO_SEARCH = 'DO_SEARCH';
 
 // DETAIL MOVIE ACTIONS:
 export const DETAIL_MOVIE = 'DETAIL_MOVIE';

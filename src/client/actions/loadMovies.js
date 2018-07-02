@@ -14,8 +14,6 @@ export const moviesLoadingError = error => ({
     error,
 });
 
-export function loadMovies() {
-    return (dispatch) => {
-        dispatch({ type: actions.APPLY_SEARCH, value: '' });
-    };
+export function applySearch(text, searchBy, sortBy) {
+    return { type: actions.APPLY_SEARCH, payload: { text, searchBy, sortBy } };
 }

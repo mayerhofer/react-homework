@@ -10,7 +10,7 @@ class Root extends React.Component {
         return (
             <ErrorBoundary>
                 <Grid>
-                    <Row><AppHeader /></Row>
+                    <Row style={{ height: '100%' }}><AppHeader /></Row>
                     <Row><AppContainer /></Row>
                 </Grid>
             </ErrorBoundary>
