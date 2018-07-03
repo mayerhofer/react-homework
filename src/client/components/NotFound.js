@@ -3,23 +3,25 @@ import {
     Grid, Row, Col, Label, Button, Glyphicon,
 } from 'react-bootstrap';
 
-const notFoundStyle = {
-    align: 'center',
-    color: 'yellow',
-};
-
 class NotFound extends React.Component {
+    notFoundStyle = {
+        align: 'center',
+        color: 'yellow',
+    };
+
+    notFoundTitle = '404 Not Found';
+
+    notFoundMessage = 'Sorry, an error has occured, Requested page not found!';
+
     render() {
         return (
             <Grid>
                 <Row>
                     <Col md={12}>
-                        <div style={notFoundStyle}>
+                        <div style={this.notFoundStyle}>
                             <h1><Label bsStyle="warning">Oops!</Label></h1>
-                            <h2>404 Not Found</h2>
-                            <div>
-                                Sorry, an error has occured, Requested page not found!
-                            </div>
+                            <h2>{this.notFoundTitle}</h2>
+                            <div>{this.notFoundMessage}</div>
                             <div>
                                 <Button href="/" bsStyle="primary" bsSize="large">
                                     <Glyphicon glyph="home" />Take Me Home

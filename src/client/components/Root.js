@@ -6,11 +6,15 @@ import AppHeader from './AppHeader';
 import AppContainer from './AppContainer';
 
 class Root extends React.Component {
+    headerRowStyle = {
+        height: '100%',
+    };
+
     render() {
         return (
             <ErrorBoundary>
                 <Grid>
-                    <Row style={{ height: '100%' }}><AppHeader /></Row>
+                    <Row style={this.headerRowStyle}><AppHeader /></Row>
                     <Row><AppContainer /></Row>
                 </Grid>
             </ErrorBoundary>

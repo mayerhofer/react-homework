@@ -5,8 +5,6 @@ import BuildRouter from './Routes';
 import ErrorBoundary from './ErrorBoundary';
 
 import * as texts from '../../constants/pageTexts';
-import configureStore from '../store/configureStore';
-import initialState from '../../models/initialState';
 
 export default (Router, context, location, store) => {
     const MyRouter = BuildRouter(Router, context, location);

@@ -1,4 +1,4 @@
-import { put, all, takeLatest } from 'redux-saga/effects';
+import { all, takeLatest } from 'redux-saga/effects';
 
 import { setSearchText } from '../actions/formActions';
 import * as actions from '../../constants/actionTypes';
