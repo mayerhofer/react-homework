@@ -5,7 +5,7 @@ import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackHotServerMiddleware from 'webpack-hot-server-middleware';
 
-import webpackConfig from '../../webpack.config.client';
+import webpackConfig from '../../webpack.config';
 import html from './html';
 
 Object.assign(global, {
