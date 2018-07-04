@@ -35,7 +35,7 @@ class AppHeader extends React.Component {
 
     render() {
         return (
-            <Navbar style={this.navbarStyle}>
+            <Navbar style={this.navbarStyle} fixedTop>
                 <NavHeader navabarBrandStyle={this.navabarBrandStyle} linkStyle={this.linkStyle} />
                 {/* <NavBody content={this.props.content} /> */}
             </Navbar>);

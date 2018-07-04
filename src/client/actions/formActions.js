@@ -1,9 +1,12 @@
 import * as types from '../../constants/actionTypes';
 
-const setSearchFilter = value => ({
-    type: types.SET_SEARCH_FILTER,
-    value,
-});
+const setSearchFilter = (value) => {
+    console.log(`helloooooooooooooooooooooo ${value}`);
+    return ({
+        type: types.SET_SEARCH_FILTER,
+        value,
+    });
+};
 
 const setSearchText = value => ({
     type: types.SET_SEARCH_TEXT,

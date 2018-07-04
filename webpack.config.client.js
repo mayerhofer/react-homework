@@ -1,13 +1,14 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const merge = require('webpack-merge');
+const server = require('./webpack.config.server');
 
-module.exports = env => ({
-    entry: [
-        'babel-polyfill',
-        './src/client/components/App.js',
-        'react-hot-loader/patch',
-    ],
-    mode: env.devOrProdMode, // 'development', 'production' or 'none'
+const env = process.env.NODE_ENV;
+
+module.exports = merge.smart(server, {
+    target: 'web',
+    entry: './src/client/index.js',
+    mode: env, // 'development', 'production' or 'none'
     output: {
         path: path.join(__dirname, 'build'),
         filename: 'bundle.js',

@@ -1,6 +1,11 @@
 import express from 'express';
 import fetch from 'node-fetch';
+import webpack from 'webpack';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
+import webpackHotServerMiddleware from 'webpack-hot-server-middleware';
 
+import webpackConfig from '../../webpack.config.client';
 import html from './html';
 
 Object.assign(global, {
@@ -11,9 +16,20 @@ Object.assign(global, {
 const app = express();
 const port = 4000;
 
-app.use(express.static('./build/client'));
+if (process.env.NODE_ENV === 'development') {
+    const compiler = webpack(webpackConfig);
 
-app.use(html);
+    app.use(webpackDevMiddleware(compiler, {
+        serverSideRender: true,
+    }));
+    app.use(webpackHotMiddleware(compiler.compilers.find(c => c.name === 'client')));
+    app.use(webpackHotServerMiddleware(compiler));
+} else {
+    // const serverRenderer = require('../public/js/serverRenderer').default;
+
+    app.use(express.static('./build'));
+    app.use(html);
+}
 
 app.listen(port, () => {
     console.log(`listening on ${port}...`);

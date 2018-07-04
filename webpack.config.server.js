@@ -1,10 +1,10 @@
 const path = require('path');
 
-module.exports = env => ({
-    entry: [
-        'babel-polyfill',
-        './src/server/index.js'],
-    mode: env.devOrProdMode, // 'development', 'production' or 'none'
+const env = process.env.NODE_ENV;
+
+module.exports = {
+    entry: './src/server/index.js',
+    mode: env, // 'development', 'production' or 'none'
     target: 'node',
     watch: true,
     output: {
@@ -31,4 +31,4 @@ module.exports = env => ({
             },
         ],
     },
-});
+};

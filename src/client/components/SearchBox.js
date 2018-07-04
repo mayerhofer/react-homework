@@ -11,6 +11,7 @@ import { setSearchText } from '../actions/formActions';
 import { applySearch } from '../actions/loadMovies';
 
 const formStyle = {
+    marginTop: '0px',
     paddingRight: '20px',
     paddingLeft: '20px',
     maxWidth: 1200,
@@ -20,12 +21,14 @@ const formStyle = {
 
 class SearchBox extends React.Component {
     formSubmitEvent(e) {
+        e.preventDefault();
+        console.log('skfjdgfslgjlfskjg');
+
         this.props.runLoad(
             this.props.filterCriteria.searchText,
             this.props.filterCriteria.filterBy,
             this.props.filterCriteria.sortBy,
         );
-        e.preventDefault();
     }
 
     render() {
